@@ -1,0 +1,64 @@
+﻿@model Poliment_DL.Model.UserMessageML
+@{
+    ViewBag.Title = "InboxMessageDetails";
+    Layout = "~/Views/Shared/_UserMenuAfterLogin.cshtml";
+}
+
+<link href="~/Content/css/Common.css" rel="stylesheet" />
+<style>
+    .IncreaseTextWidth {
+        width: 470px;
+    }
+
+    .clsSpanRed {
+        color: #F00;
+    }
+    .clsSetHeaderDesc{
+    margin-top: 35px;
+    margin-left: 195px;
+    }
+</style>
+<h2 class="clsSetHeaderDesc">Inbox - Message Details</h2>
+<br />
+
+<div id="dvMessageDetails">
+    <fieldset>
+        <legend>
+            <b>Message Details</b>
+        </legend>
+        @if (Model.Id > 0)
+        {
+            <table class="clsTableLeftMargin" cellspacing="15" cellpadding="0">
+                <tr>
+                    <td>Created Date</td>
+                    <td>:</td>
+                    <td>@Model.DisplayCreatedDate</td>
+
+                </tr>
+                <tr>
+                    <td>Message Subject</td>
+                    <td>:</td>
+                    <td>@Model.MessageSubject</td>
+
+                </tr>
+                <tr>
+                    <td>Message Body</td>
+                    <td>:</td>
+                    <td>@Model.MessageBody</td>
+
+                </tr>
+                @if (!string.IsNullOrEmpty(Model.FileName))
+                {
+                    <tr>
+                        <td>Received File from Admin</td>
+                        <td>:</td>
+                        <td><a href="@Model.AttachmentPath" target="_blank">Click here to download</a></td>
+                    </tr>
+                }
+               
+            </table>
+        }
+
+
+    </fieldset>
+</div>

@@ -1,0 +1,118 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Welcome</title>
+    <script src="~/Content/js/jquery-1.8.3.js"></script>
+    <script src="~/Content/js/jquery-ui.min.js"></script>
+    <link href="~/Content/css/AdminMenu.css" rel="stylesheet" />
+    <link href="~/Content/css/superfish.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="~/Scripts/superfish.js"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('#menu').superfish();
+        });
+    </script>
+</head>
+<body>
+    <header>
+        @{
+            string userName = Convert.ToString(Session["AdminUserName"]);
+        }
+        <div>
+            <table cellspacing="3" cellpadding="3" style="float:right;">
+                <tr>
+                    <td><span style="float:right;font-size:medium;color:black;"><b> Welcome : @userName</b></span></td>
+                </tr>
+            </table>
+        </div>
+        <div class="menu-box">
+            <div class="container">
+                <div class="navigation">
+                    <ul class="sf-menu" style="background-color:chocolate;" id="menu">
+                        <li><a href="/Admin/Dashboard">Home</a></li>
+                        <li>
+                            <a href="javascript:void(0)">Search</a>
+                            <ul>
+                                <li><a href="/Admin/SearchInActiveUserByBlockArea">Search InActive User</a></li>
+                                <li><a href="/Admin/SearchByBlockArea">Search User</a></li>
+                                <li><a href="/Admin/SearchByUserName">Search User By User Name</a></li>
+                                <li><a href="/Admin/SearchVotingSurveyByBlockArea">Search Voting Survey</a></li>
+
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">Message</a>
+                            <ul>
+                                <li><a href="/Admin/SendMessageByAdmin">Send Message</a></li>
+                                <li><a href="/Admin/AllUserMessage">All User Message</a></li>
+                                <li><a href="/Admin/SentMessageByAdmin">Sent Message</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">SMS</a>
+                            <ul>
+                                <li><a href="/Admin/SendSmsByAdmin">Send Sms</a></li>
+                                <li><a href="/Admin/SendVoiceCallByAdmin">Send Voice Call</a></li>
+                                <li><a href="/Admin/GetAllVoiceCallSentDetails">Sent Call Details</a></li>
+                                <li><a href="/Admin/GetAllMessageSentDetails">Sent Message Details</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">Create</a>
+                            <ul>
+                                <li><a href="/Admin/CreateUser">Create User</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">Manage User Interface</a>
+                            <ul>
+                                <li><a href="/Admin/ManageFrontImage">Manage Front Image</a></li>
+                                <li><a href="/Admin/ManageFrontVideo">Manage Front Video</a></li>
+                                <li><a href="/Admin/ManageHomeScreen">Manage Home Screen</a></li>
+                                <li><a href="/Admin/ManageNews">Manage News</a></li>
+                                <li><a href="/Admin/ManageGuestQuery">Manage Guest Query</a></li>
+                                <li><a href="/Admin/ManageDevelopmentWork">Manage Development Work</a></li>
+                                <li><a href="/Admin/ManageContactMessage">Manage Contact Message</a></li>
+                            </ul>
+
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">Admin Account</a>
+                            <ul>
+                                <li><a href="/Admin/AdminChangePassword">Change Password</a></li>
+                                <li><a href="/Admin/UpdateAdminDetails">Update Admin Details</a></li>
+                                <li><a href="/Admin/LogOut">LogOut</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </header>
+    <section>
+        <div id="Body">
+            @RenderBody()
+        </div>
+    </section>
+    <footer>
+        <div class="copyright-bdr">
+            <div class="copy-rightcont">
+                <span>   © copyright 2019, All right reserved.</span>
+
+            </div>
+        </div>
+
+    </footer>
+
+</body>
+</html>

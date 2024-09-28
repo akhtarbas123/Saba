@@ -1,0 +1,34 @@
+﻿@model Poliment_DL.Model.AdminNewsML
+@{
+    ViewBag.Title = "ShowAdminNews";
+    Layout = "~/Views/Shared/_LayoutBeforeLogin.cshtml";
+}
+<link href="~/Content/css/Common.css" rel="stylesheet" />
+
+
+<br />
+<h3><span style=" margin-left:485px;">News Description</span></h3>
+<div>
+    <fieldset>
+       
+
+        <table class="clsTableLeftMargin" cellspacing="10" cellpadding="10">
+
+            <tr>
+                <td><b> News Heading</b></td>
+                <td>:</td>
+                <td>@Model.NewsHeading</td>
+            </tr>
+            <tr>
+                <td><b>News Description</b></td>
+                <td>:</td>
+                <td>@Model.NewsDescription</td>
+            </tr>
+
+        </table>
+
+    </fieldset>
+</div>
+<div id="dvBlank" style="margin-top:153px;">
+
+</div>

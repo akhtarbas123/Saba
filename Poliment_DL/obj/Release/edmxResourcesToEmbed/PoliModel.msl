@@ -1,0 +1,387 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PoliModelStoreContainer" CdmEntityContainer="PoliEntities">
+    <EntitySetMapping Name="PL_Admin">
+      <EntityTypeMapping TypeName="PoliModel.PL_Admin">
+        <MappingFragment StoreEntitySet="PL_Admin">
+          <ScalarProperty Name="AdminRole" ColumnName="AdminRole" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="PoliticalParty" ColumnName="PoliticalParty" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PL_Area">
+      <EntityTypeMapping TypeName="PoliModel.PL_Area">
+        <MappingFragment StoreEntitySet="PL_Area">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="STATENAME" ColumnName="STATENAME" />
+          <ScalarProperty Name="DISTRICTNAME" ColumnName="DISTRICTNAME" />
+          <ScalarProperty Name="SUBDISTRICTNAME" ColumnName="SUBDISTRICTNAME" />
+          <ScalarProperty Name="AreaName" ColumnName="AreaName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PL_Block">
+      <EntityTypeMapping TypeName="PoliModel.PL_Block">
+        <MappingFragment StoreEntitySet="PL_Block">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="BlockName" ColumnName="BlockName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PL_User">
+      <EntityTypeMapping TypeName="PoliModel.PL_User">
+        <MappingFragment StoreEntitySet="PL_User">
+          <ScalarProperty Name="UserRole" ColumnName="UserRole" />
+          <ScalarProperty Name="IsSuperUser" ColumnName="IsSuperUser" />
+          <ScalarProperty Name="AreaName" ColumnName="AreaName" />
+          <ScalarProperty Name="AreaId" ColumnName="AreaId" />
+          <ScalarProperty Name="BlockName" ColumnName="BlockName" />
+          <ScalarProperty Name="BlockId" ColumnName="BlockId" />
+          <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="PoliticalParty" ColumnName="PoliticalParty" />
+          <ScalarProperty Name="Designation" ColumnName="Designation" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PL_UserMessage">
+      <EntityTypeMapping TypeName="PoliModel.PL_UserMessage">
+        <MappingFragment StoreEntitySet="PL_UserMessage">
+          <ScalarProperty Name="ReplyFileName" ColumnName="ReplyFileName" />
+          <ScalarProperty Name="ReplyMessage" ColumnName="ReplyMessage" />
+          <ScalarProperty Name="UserFullName" ColumnName="UserFullName" />
+          <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+          <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="MessageBody" ColumnName="MessageBody" />
+          <ScalarProperty Name="MessageSubject" ColumnName="MessageSubject" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PL_AdminMessage">
+      <EntityTypeMapping TypeName="PoliModel.PL_AdminMessage">
+        <MappingFragment StoreEntitySet="PL_AdminMessage">
+          <ScalarProperty Name="MessageSubject" ColumnName="MessageSubject" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+          <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="MessageBody" ColumnName="MessageBody" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PL_FrontEndImage">
+      <EntityTypeMapping TypeName="PoliModel.PL_FrontEndImage">
+        <MappingFragment StoreEntitySet="PL_FrontEndImage">
+          <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+          <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PL_ManageHomeScreen">
+      <EntityTypeMapping TypeName="PoliModel.PL_ManageHomeScreen">
+        <MappingFragment StoreEntitySet="PL_ManageHomeScreen">
+          <ScalarProperty Name="VotingSurveyHeading" ColumnName="VotingSurveyHeading" />
+          <ScalarProperty Name="AddSecondAddress" ColumnName="AddSecondAddress" />
+          <ScalarProperty Name="AddFirstAddress" ColumnName="AddFirstAddress" />
+          <ScalarProperty Name="UpdateName" ColumnName="UpdateName" />
+          <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="LongDescription" ColumnName="LongDescription" />
+          <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+          <ScalarProperty Name="Heading" ColumnName="Heading" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PL_AdminOtp">
+      <EntityTypeMapping TypeName="PoliModel.PL_AdminOtp">
+        <MappingFragment StoreEntitySet="PL_AdminOtp">
+          <ScalarProperty Name="UpdateCount" ColumnName="UpdateCount" />
+          <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Modifydate" ColumnName="Modifydate" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsExpired" ColumnName="IsExpired" />
+          <ScalarProperty Name="ExpiredDate" ColumnName="ExpiredDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="OtpValue" ColumnName="OtpValue" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PL_AdminNews">
+      <EntityTypeMapping TypeName="PoliModel.PL_AdminNews">
+        <MappingFragment StoreEntitySet="PL_AdminNews">
+          <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="NewsDescription" ColumnName="NewsDescription" />
+          <ScalarProperty Name="NewsHeading" ColumnName="NewsHeading" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PL_UserOtp">
+      <EntityTypeMapping TypeName="PoliModel.PL_UserOtp">
+        <MappingFragment StoreEntitySet="PL_UserOtp">
+          <ScalarProperty Name="UpdateCount" ColumnName="UpdateCount" />
+          <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Modifydate" ColumnName="Modifydate" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsExpired" ColumnName="IsExpired" />
+          <ScalarProperty Name="ExpiredDate" ColumnName="ExpiredDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="OtpValue" ColumnName="OtpValue" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PL_GuestQuery">
+      <EntityTypeMapping TypeName="PoliModel.PL_GuestQuery">
+        <MappingFragment StoreEntitySet="PL_GuestQuery">
+          <ScalarProperty Name="AdminResponseMessage" ColumnName="AdminResponseMessage" />
+          <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="QueryDescription" ColumnName="QueryDescription" />
+          <ScalarProperty Name="QueryHeading" ColumnName="QueryHeading" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="FourDigitPin" ColumnName="FourDigitPin" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="AreaName" ColumnName="AreaName" />
+          <ScalarProperty Name="AreaId" ColumnName="AreaId" />
+          <ScalarProperty Name="BlockName" ColumnName="BlockName" />
+          <ScalarProperty Name="BlockId" ColumnName="BlockId" />
+          <ScalarProperty Name="QueryTypeValue" ColumnName="QueryTypeValue" />
+          <ScalarProperty Name="QueryTypeId" ColumnName="QueryTypeId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PL_AdminDevelopmentWork">
+      <EntityTypeMapping TypeName="PoliModel.PL_AdminDevelopmentWork">
+        <MappingFragment StoreEntitySet="PL_AdminDevelopmentWork">
+          <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="DevelopmentDescription" ColumnName="DevelopmentDescription" />
+          <ScalarProperty Name="DevelopmentHeading" ColumnName="DevelopmentHeading" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PL_ContactMessage">
+      <EntityTypeMapping TypeName="PoliModel.PL_ContactMessage">
+        <MappingFragment StoreEntitySet="PL_ContactMessage">
+          <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Mobie" ColumnName="Mobie" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PL_FrontEndVideo">
+      <EntityTypeMapping TypeName="PoliModel.PL_FrontEndVideo">
+        <MappingFragment StoreEntitySet="PL_FrontEndVideo">
+          <ScalarProperty Name="VideoLength" ColumnName="VideoLength" />
+          <ScalarProperty Name="VideoDescription" ColumnName="VideoDescription" />
+          <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+          <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="VideoType" ColumnName="VideoType" />
+          <ScalarProperty Name="VideoName" ColumnName="VideoName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PL_VotingSurvey">
+      <EntityTypeMapping TypeName="PoliModel.PL_VotingSurvey">
+        <MappingFragment StoreEntitySet="PL_VotingSurvey">
+          <ScalarProperty Name="VoterIdNumber" ColumnName="VoterIdNumber" />
+          <ScalarProperty Name="AdminResponseMessage" ColumnName="AdminResponseMessage" />
+          <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="AreaName" ColumnName="AreaName" />
+          <ScalarProperty Name="AreaId" ColumnName="AreaId" />
+          <ScalarProperty Name="BlockName" ColumnName="BlockName" />
+          <ScalarProperty Name="BlockId" ColumnName="BlockId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PL_VoiceCallDetails">
+      <EntityTypeMapping TypeName="PoliModel.PL_VoiceCallDetails">
+        <MappingFragment StoreEntitySet="PL_VoiceCallDetails">
+          <ScalarProperty Name="TotalSentNumber" ColumnName="TotalSentNumber" />
+          <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Seconds" ColumnName="Seconds" />
+          <ScalarProperty Name="Minutes" ColumnName="Minutes" />
+          <ScalarProperty Name="Hour" ColumnName="Hour" />
+          <ScalarProperty Name="BlockId" ColumnName="BlockId" />
+          <ScalarProperty Name="AllUser" ColumnName="AllUser" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SentSmsDetails">
+      <EntityTypeMapping TypeName="PoliModel.SentSmsDetail">
+        <MappingFragment StoreEntitySet="SentSmsDetails">
+          <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="TotalSentNumber" ColumnName="TotalSentNumber" />
+          <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="SentSms" ColumnName="SentSms" />
+          <ScalarProperty Name="BlockId" ColumnName="BlockId" />
+          <ScalarProperty Name="AllUser" ColumnName="AllUser" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PL_AdminOtpRecord">
+      <EntityTypeMapping TypeName="PoliModel.PL_AdminOtpRecord">
+        <MappingFragment StoreEntitySet="PL_AdminOtpRecord">
+          <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="OtpValue" ColumnName="OtpValue" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PL_UserOtpRecord">
+      <EntityTypeMapping TypeName="PoliModel.PL_UserOtpRecord">
+        <MappingFragment StoreEntitySet="PL_UserOtpRecord">
+          <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="OtpValue" ColumnName="OtpValue" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PL_UserBankDetails">
+      <EntityTypeMapping TypeName="PoliModel.PL_UserBankDetails">
+        <MappingFragment StoreEntitySet="PL_UserBankDetails">
+          <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="BranchAddress" ColumnName="BranchAddress" />
+          <ScalarProperty Name="BankName" ColumnName="BankName" />
+          <ScalarProperty Name="IfscCode" ColumnName="IfscCode" />
+          <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

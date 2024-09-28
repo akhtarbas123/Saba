@@ -1,0 +1,147 @@
+﻿@model Poliment_UI.Models.HomeVM
+@{
+    ViewBag.Title = "DevelopmentWork";
+    Layout = "~/Views/Shared/_LayoutBeforeLogin.cshtml";
+}
+<style type="text/css">
+    .pran-bg {
+        width: 100%;
+        padding: 20px 0;
+        background-color: #deebe3;
+    }
+
+    .pran-bg2 {
+        width: 100%;
+        padding: 20px 0;
+        background-color: #fff;
+    }
+
+    .container {
+        width: 960px;
+        margin: 0 auto;
+    }
+
+    .createbutton {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 5px 18px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+
+    .cancelbutton {
+        background-color: #777620;
+        border: none;
+        color: white;
+        padding: 5px 18px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+
+    .ShowVideo {
+        margin-top: 35px;
+        width: 87%;
+        margin-left: 120px;
+        height: 550px;
+    }
+    .clsDescriptionMargin
+    {
+        margin-left:175px;
+    }
+
+</style>
+<h3><span style=" margin-left:485px;">Development Work</span></h3>
+
+<div style="margin-top:26px;">
+    @{
+        if (Model.AdminDevelopmentWorkML.Count > 0)
+        {
+            int num = 1;
+            int developmentWorkCount = Model.AdminDevelopmentWorkML.Count;
+            foreach (var item in Model.AdminDevelopmentWorkML)
+            {
+                if (num % 2 == 0)
+                {
+                    <div class="pran-bg2">
+                        <div class="container">
+                            <h3>@item.DevelopmentHeading</h3>
+                            <h6>@item.DevelopmentDescription</h6>
+                        </div>
+                    </div>
+                    num++;
+                }
+                else
+                {
+                    if (num == 1 && developmentWorkCount == 1)
+                    {
+                        <div class="pran-bg">
+                            <div class="container" style="height:194px;">
+                                <h3>@item.DevelopmentHeading</h3>
+                                <h6>@item.DevelopmentDescription</h6>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="pran-bg">
+                            <div class="container">
+                                <h3>@item.DevelopmentHeading</h3>
+                                <h6>@item.DevelopmentDescription</h6>
+                            </div>
+                        </div>
+                    }
+                    num++;
+                }
+            }
+            int pageValue = Convert.ToInt32(ViewBag.PageValue);
+            string nextRedirectPath = string.Empty;
+            string previousRedirectPath = string.Empty;
+
+            if (Model.AdminDevelopmentWorkML.Count > 0)
+            {
+                if (pageValue == 1)
+                {
+                    nextRedirectPath = Model.AbsolutePath + "Home/DevelopmentWork/2";
+                    <table cellspacing="0" cellpadding="0" style="margin-left:900px;">
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><a href="@nextRedirectPath" class="createbutton">Next</a></td>
+                        </tr>
+                    </table>
+
+                }
+                else
+                {
+                    int previousPageValue = pageValue - 1;
+                    pageValue = pageValue + 1;
+                    <table cellspacing="10" cellpadding="0" style="margin-left:900px;">
+                        <tr>
+                            <td><a href="/Home/DevelopmentWork/@previousPageValue" class="cancelbutton">Previous</a></td>
+                            <td></td>
+                            <td></td>
+                            <td><a href="/Home/DevelopmentWork/@pageValue" class="createbutton">Next</a></td>
+                        </tr>
+                    </table>
+
+                }
+            }
+        }
+        else
+        {
+            <div style="margin-top:277px;margin-left:485px;font-size:x-large;">
+                <span><b>No record found</b></span>
+            </div>
+        }
+    }
+</div>

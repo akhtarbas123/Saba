@@ -1,0 +1,115 @@
+﻿@model Poliment_UI.Models.AdminMessageVM
+@{
+    ViewBag.Title = "SendSmsByAdmin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+        var validateBlock = "Yes";
+
+        $('input[type="checkbox"]').click(function () {
+            if ($(this).prop("checked") == true) {
+                $('#RowBlock').hide();
+                validateBlock = "No";
+                $("#BlockName").val(0);
+            }
+            else if ($(this).prop("checked") == false) {
+                $('#RowBlock').show();
+                validateBlock = "Yes";
+            }
+        });
+
+        $('#btnSendMessage').click(function () {
+            var message = $("#AdminMessage").val();
+            if (message == null || message == "") {
+                alert("Please enter message");
+                return false;
+            }
+            if (validateBlock == 'Yes') {
+                var blockId = $("#BlockName option:selected").val();
+                if (blockId == 'undefined' || blockId == null || blockId == "") {
+                    alert("Please select block");
+                    return false;
+                }
+            }
+        });
+        $("#smsForm").submit(function (e) {
+            $("#myLoadingElement").show();
+        });
+    });
+
+</script>
+<style type="text/css">
+    .clsSetHeaderDesc {
+        margin-top: 35px;
+        margin-left: 195px;
+    }
+</style>
+<link href="~/Content/css/Common.css" rel="stylesheet" />
+<h2 class="clsSetHeaderDesc">Send Sms</h2>
+<div>
+    @{
+        if (TempData["MessageSent"] != null)
+        {
+            <script type="text/javascript">
+            alert("Message sent successfully");
+            </script>
+            TempData.Remove("MessageSent");
+        }
+
+    }
+</div>
+<fieldset>
+    @using (Html.BeginForm("SendSmsByAdmin", "Admin", FormMethod.Post , new { id = "smsForm" }))
+    {
+        @Html.AntiForgeryToken()
+        <table class="clsTableLeftMargin" cellspacing="10" cellpadding="10">
+            <tr>
+                <td>Send message to all user</td>
+                <td>:</td>
+                <td><input type="checkbox" id="chkAllUser" name="chkAllUser" /></td>
+            </tr>
+            <tr id="RowBlock">
+                <td>Send message by block</td>
+                <td>:</td>
+                <td>
+                    @Html.DropDownListFor(x => x.BlockName, new SelectList(Model.BlockML, "Id", "BlockName"), "Select", new { @class = "layoutdropdown" })
+                </td>
+            </tr>
+            <tr>
+                <td>Message</td>
+                <td>:</td>
+                <td><textarea id="AdminMessage" maxlength="2400" name="AdminMessage" class="reg-frm-inp"></textarea></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td>
+                    <input type="submit" id="btnSendMessage" class="createbutton" value="Send" />
+                    <a href="/Admin/Dashboard" class="cancelbutton">Cancel</a>
+                </td>
+            </tr>
+        </table>
+        <br /><br />
+        <div style="color:red;">
+            If you write message in English language , 120 characters will be equal to 1 message credit deduction
+            <br /><br />
+            Example : 120 characters 1 message credit deduction,
+                      240 characters 2 message credit deduction,
+                      360 characters 3 message credit deduction
+        <br /><br /><br />
+            If you write message in Hindi and other language except English , 60 characters will be equal 
+            to 1 message credit deduction
+            <br /><br />
+            Example : 60 characters 1 message credit deduction,
+            120 characters 2 message credit deduction,
+            180 characters 3 message credit deduction
+        
+        </div>
+    }
+
+
+</fieldset>
+<div id="myLoadingElement" style="display: none;margin-left:500px;">
+    <img src="~/images/WaitingLoader.gif" alt="Loading..." />
+</div>

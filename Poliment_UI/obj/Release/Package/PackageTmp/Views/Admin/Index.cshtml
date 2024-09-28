@@ -1,0 +1,258 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Admin Login</title>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#dvResetPassword').hide();
+            $('#btnLogin').click(function () {
+
+                var userName = $("#userName").val();
+                if (userName == undefined || userName == null || userName == "") {
+                    alert("Please enter user name");
+                    $("#userName").focus();
+                    return false;
+                }
+                var passWord = $("#Password").val();
+                if (passWord == undefined || passWord == null || passWord == "") {
+                    alert("Please enter password");
+                    $("#Password").focus();
+                    return false;
+                }
+            });
+
+
+            $('#forgotPassword').click(function () {
+                $('#dvResetPassword').show();
+            });
+            $('#btnResetCancel').click(function () {
+                $('#resetUserName').val('');
+                $('#dvResetPassword').hide();
+            });
+            $('#btnResetPassword').click(function () {
+                var userName = $("#resetUserName").val();
+                if (userName == undefined || userName == null || userName == "") {
+                    alert("Please enter user name to reset password");
+                    $("#resetUserName").focus();
+                    return false;
+                }
+            });
+            $('#btnOtpValidate').click(function () {
+                var resetOtp = $("#resetOtp").val();
+                if (resetOtp == undefined || resetOtp == null || resetOtp == "") {
+                    alert("Please enter otp sent on your mobile number");
+                    $("#resetOtp").focus();
+                    return false;
+                }
+            });
+            $('#btnOtpCancel').click(function () {
+                $('#resetOtp').val('');
+                $('#dvResetOtp').hide();
+            });
+
+
+        });
+
+    </script>
+    <link href="~/Content/css/Common.css" rel="stylesheet" />
+    <style type="text/css">
+        .IncreaseTextWidth {
+            width: 470px;
+        }
+         .clsSpanRed {
+        color: #F00;
+    }
+    </style>
+</head>
+<body>
+    <div id="divShowAlert">
+
+
+        @{
+            if (ViewBag.ResetUserName != null)
+            {
+                <script type="text/javascript">
+                alert("Please enter user name");
+                </script>
+            }
+
+        }
+        @{
+            if (ViewBag.ResetError != null)
+            {
+                <script type="text/javascript">
+                alert("User does not exist");
+                </script>
+            }
+
+        }
+        @{
+            if (ViewBag.ResetOtpNull != null)
+            {
+                <script type="text/javascript">
+                    alert("Otp value can not be null");
+                </script>
+            }
+
+        }
+        @{
+            if (ViewBag.WrongAdminOtp != null)
+            {
+                <script type="text/javascript">
+                    alert("You entered wrong otp value.Please generate otp again to reset password");
+                </script>
+            }
+
+        }
+        @{
+            if (ViewBag.InvalidAdminOtp != null)
+            {
+                <script type="text/javascript">
+                    alert("Otp expired.Please generate otp again to reset password");
+                </script>
+            }
+
+        }
+        @{
+            if (ViewBag.ReachedPasswordOtp != null)
+            {
+                <script type="text/javascript">
+                    alert("Maximum limits of sending otp to reset password has exceeded.Please contact admin to reset password");
+                </script>
+            }
+
+        }
+        @{
+            if (ViewBag.PasswordChangedSuccessfully != null)
+            {
+                <script type="text/javascript">
+                    alert("Your account password changed successfully.Now you can login with new password");
+                </script>
+            }
+
+        }
+        @{
+            if (ViewBag.PasswordChangedError != null)
+            {
+                <script type="text/javascript">
+                    alert("An error occured while changing your password.Please try again to change your password");
+                </script>
+            }
+
+        }
+    </div>
+    <div id="divLogin">
+        <fieldset>
+            <legend><b>Admin Login</b></legend>
+            <div>
+              <h2>Admin Login</h2>
+                  @using (Html.BeginForm("Index", "Admin", FormMethod.Post))
+            {
+                    @Html.AntiForgeryToken()
+
+                    <table class="clsTableLeftMargin" cellspacing="30" cellpadding="0">
+                        <tr>
+                            <td>User Name<span class="clsSpanRed">*</span> </td>
+                            <td>:</td>
+                            <td><input type="text" class="IncreaseTextWidth" id="userName" maxlength="60" name="userName" class="reg-frm-inp" /></td>
+                        </tr>
+                        <tr>
+                            <td>Password<span class="clsSpanRed">*</span></td>
+                            <td>:</td>
+                            <td><input type="password" class="IncreaseTextWidth" id="Password" maxlength="60" name="Password" class="reg-frm-inp" /></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td><input type="submit" id="btnLogin" class="createbutton" value="Login" /></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><a href="javascript:void(0);" id="forgotPassword" class="cancelbutton">Forgot Password</a></td>
+                        </tr>
+                    </table>
+
+                }
+            </div>
+            <div>
+                <span style="color:red;font-size:large">@ViewBag.Error</span>
+                <br />
+                <span style="color:red;font-size:large">@ViewBag.UserName</span>
+                <br />
+                <span style="color:red;font-size:large">@ViewBag.Password</span>
+            </div>
+        </fieldset>
+    </div>
+    <div id="divResetPassword">
+        @{
+
+            <div id="dvResetPassword">
+                <h2>Enter user name to get otp</h2>
+                @using (Html.BeginForm("ResetPassword", "Admin", FormMethod.Post))
+                {
+            @Html.AntiForgeryToken()
+            <fieldset>
+                <legend>
+                    <b>Reset Password</b>
+                </legend>
+                <table class="clsTableLeftMargin" cellspacing="15" cellpadding="0">
+                    <tr>
+                        <td>Enter user name<span class="clsSpanRed">*</span></td>
+                        <td>:</td>
+                        <td><input type="text" id="resetUserName" maxlength="60" name="resetUserName" class="reg-frm-inp IncreaseTextWidth" /></td>
+                        <td>
+                            <input type="submit" id="btnResetPassword" class="createbutton" value="Submit" />
+                            <input type="button" id="btnResetCancel" class="cancelbutton" value="Cancel" />
+                        </td>
+                    </tr>
+                </table>
+
+            </fieldset>
+                }
+
+            </div>
+
+            if (ViewBag.ShowOtpDiv != null)
+            {
+                <div id="dvResetOtp">
+                    <h2>An otp has been sent to your register mobile number</h2>
+                    @using (Html.BeginForm("ValidateAdminOtp", "Admin", FormMethod.Post))
+                {
+                @Html.AntiForgeryToken()
+                <fieldset>
+                    <legend>
+                        <b>Validate Otp</b>
+                    </legend>
+                    <table class="clsTableLeftMargin" cellspacing="15" cellpadding="0">
+                        <tr>
+                            <td>Enter otp<span class="clsSpanRed">*</span> </td>
+                            <td>:<input type="hidden" id="adminId" name="adminId" value="@ViewBag.ShowOtpDiv" /></td>
+                            <td><input type="text" id="resetOtp" maxlength="6" name="resetOtp" class="reg-frm-inp IncreaseTextWidth" /></td>
+                            <td>
+                                <input type="submit" id="btnOtpValidate" class="createbutton" value="Validate Otp" />
+                                <input type="button" id="btnOtpCancel" class="cancelbutton" value="Cancel" />
+                            </td>
+                        </tr>
+                    </table>
+
+                </fieldset>
+                }
+
+                </div>
+            }
+        }
+    </div>
+
+
+</body>
+</html>

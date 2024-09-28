@@ -1,0 +1,116 @@
+﻿@model Poliment_DL.Model.UserBankDetailsML
+@{
+    ViewBag.Title = "UserBankDetails";
+    Layout = "~/Views/Shared/_UserMenuAfterLogin.cshtml";
+}
+
+<link href="~/Content/css/Common.css" rel="stylesheet" />
+<style>
+    .IncreaseTextWidth {
+        width: 470px;
+    }
+
+    .clsSpanRed {
+        color: #F00;
+    }
+     .clsSetHeaderDesc{
+    margin-top: 35px;
+    margin-left: 195px;
+    }
+</style>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('#btnSaveDetails').click(function () {
+            var accountNumber = $("#accountNumber").val();
+            if (accountNumber == undefined || accountNumber == null || accountNumber == "") {
+                alert("Please enter bank account number");
+                $("#accountNumber").focus();
+                return false;
+            }
+            var ifscCode = $("#ifscCode").val();
+            if (ifscCode == undefined || ifscCode == null || ifscCode == "") {
+                alert("Please enter ifsc code");
+                $("#ifscCode").focus();
+                return false;
+            }
+            var bankName = $("#bankName").val();
+            if (bankName == undefined || bankName == null || bankName == "") {
+                alert("Please enter bank name");
+                $("#bankName").focus();
+                return false;
+            }
+        });
+    });
+</script>
+<h2 class="clsSetHeaderDesc">User Bank Details</h2>
+<br />
+<div>
+    @{
+        if (TempData["BankAccSaved"] != null)
+        {
+            <script type="text/javascript">
+                alert("Bank account details saved successfully");
+            </script>
+            TempData.Remove("BankAccSaved");
+        }
+
+    }
+    @{
+        if (TempData["BankAccError"] != null)
+        {
+            <script type="text/javascript">
+            alert("An error occured.Please try again");
+            </script>
+            TempData.Remove("BankAccError");
+        }
+
+    }
+</div>
+<div id="dvChangePassword">
+
+    @using (Html.BeginForm("UserBankDetails", "User", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <fieldset>
+            <legend>
+                <b>Bank Details</b>
+            </legend>
+
+            <table class="clsTableLeftMargin" cellspacing="15" cellpadding="0">
+                <tr>
+                    <td>Account Number<span class="clsSpanRed">*</span></td>
+                    <td>:</td>
+                    <td><input type="text" id="accountNumber" name="accountNumber" value="@Model.AccountNumber" maxlength="60" class="reg-frm-inp IncreaseTextWidth" /></td>
+                </tr>
+                <tr>
+                    <td>Ifsc Code<span class="clsSpanRed">*</span></td>
+                    <td>:</td>
+                    <td><input type="text" id="ifscCode" name="ifscCode" maxlength="20" value="@Model.IfscCode" class="reg-frm-inp IncreaseTextWidth" /></td>
+                </tr>
+                <tr>
+                    <td>Bank Name<span class="clsSpanRed">*</span></td>
+                    <td>:</td>
+                    <td><input type="text" id="bankName" name="bankName" maxlength="80" value="@Model.BankName" class="reg-frm-inp IncreaseTextWidth" /></td>
+                </tr>
+                <tr>
+                    <td>Branch Address</td>
+                    <td>:</td>
+                    <td><input type="text" id="branch" name="branch" maxlength="300" value="@Model.BranchAddress" class="reg-frm-inp IncreaseTextWidth" /></td>
+
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <input type="submit" id="btnSaveDetails" class="createbutton" value="Update Bank Details" />
+                        <a href="/User/Dashboard" id="btnResetCancel" class="cancelbutton">Cancel</a>
+                    </td>
+                </tr>
+            </table>
+
+        </fieldset>
+    }
+
+</div>
+

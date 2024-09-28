@@ -1,0 +1,138 @@
+﻿
+@{
+    ViewBag.Title = "GuestQueryResponse";
+    Layout = "~/Views/Shared/_LayoutBeforeLogin.cshtml";
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('#dvShowResponse').hide();
+        $('#btnGetQuery').click(function () {
+            $('#dvShowResponse').hide();
+            var referenceNumber = $("#referenceNumber").val();
+            if (referenceNumber == undefined || referenceNumber == null || referenceNumber == "") {
+                alert("Please enter reference number");
+                $("#referenceNumber").focus();
+                return false;
+            }
+            var fourDigitPin = $("#fourDigitPin").val();
+            if (fourDigitPin == undefined || fourDigitPin == null || fourDigitPin == "") {
+                alert("Please enter four digit pin");
+                $("#fourDigitPin").focus();
+                return false;
+            }
+
+            var sdata = {};
+            sdata.referenceNumberValue = referenceNumber;
+            sdata.fourDigitPinValue = fourDigitPin;
+            $.ajax({
+                url: '/Home/GuestQueryResponse',
+                type: "POST",
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                data: JSON.stringify(sdata),
+                success: function (result) {
+                    if (result.ErrorMessage == "Please enter valid credential") {
+                        alert("Please enter valid reference number and four digit pin");
+                    }
+                    else {
+                        $("#referenceNumber").val('');
+                        $("#fourDigitPin").val('');
+                        $('#dvShowResponse').show();
+                        $('#spnQueryHeading').html(result.QueryHeading);
+                        $('#spnQueryDescription').html(result.QueryDescription);
+                        $('#spnQueryResponse').html(result.AdminResponseMessage);
+                    }
+
+                },
+                error: function () {
+                    alert("An error occured");
+                }
+            });
+        });
+        $("#referenceNumber").keydown(function (e) {
+            if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110]) !== -1 ||
+                   (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) ||
+                   (e.keyCode >= 35 && e.keyCode <= 40)) {
+
+                return;
+            }
+            if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+                e.preventDefault();
+            }
+        });
+        $("#fourDigitPin").keydown(function (e) {
+            if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110]) !== -1 ||
+                   (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) ||
+                   (e.keyCode >= 35 && e.keyCode <= 40)) {
+
+                return;
+            }
+            if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+                e.preventDefault();
+            }
+        });
+    });
+
+</script>
+<link href="~/Content/css/Common.css" rel="stylesheet" />
+<style type="text/css">
+    .clsBodyBackGround {
+        background-color: #f1f0f1;
+    }
+</style>
+<div class="clsBodyBackGround">
+    <h3><span style="margin-left:485px;">Get Query Response</span></h3>
+    <div id="dvValidateResponse" style="margin-top:18px;">
+        <fieldset>
+
+            <table class="clsTableLeftMargin" cellspacing="15" cellpadding="15">
+
+                <tr>
+                    <td><b>Reference number</b><span class="clsSpanRed">*</span></td>
+                    <td>:</td>
+                    <td><input type="text" id="referenceNumber" maxlength="9" name="referenceNumber" class="reg-frm-inp IncreaseTextWidth" /></td>
+                </tr>
+                <tr>
+                    <td><b>Four digit pin</b><span class="clsSpanRed">*</span></td>
+                    <td>:</td>
+                    <td><input type="password" id="fourDigitPin" maxlength="4" name="fourDigitPin" class="reg-frm-inp IncreaseTextWidth" /></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <input type="button" id="btnGetQuery" value="Get Query Response" class="createbutton" />
+                        <a href="/Home/Index" class="cancelbutton">Cancel</a>
+                    </td>
+                </tr>
+            </table>
+
+        </fieldset>
+    </div>
+</div>
+<br />
+<div id="dvShowResponse">
+    <h3><span style="margin-left:485px;">Query Response</span></h3>
+    <fieldset>
+        <table class="clsTableLeftMargin" cellspacing="10" cellpadding="10">
+            <tr>
+                <td><b> Query Heading</b></td>
+                <td>:</td>
+                <td><span id="spnQueryHeading"></span></td>
+            </tr>
+            <tr>
+                <td><b>Query Description</b></td>
+                <td>:</td>
+                <td><span id="spnQueryDescription"></span></td>
+            </tr>
+            <tr>
+                <td><b>Query Response</b></td>
+                <td>:</td>
+                <td><span id="spnQueryResponse"></span></td>
+            </tr>
+
+        </table>
+
+    </fieldset>
+</div>

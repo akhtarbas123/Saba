@@ -1,0 +1,84 @@
+﻿@model Poliment_DL.Model.GuestQueryML
+@{
+    ViewBag.Title = "ShowGuestQuery";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style type="text/css">
+    .clsSetHeaderDesc {
+        margin-top: 35px;
+        margin-left: 195px;
+    }
+</style>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('#btnSaveQuery').click(function () {
+            var queryResponse = $("#queryResponse").val();
+            if (queryResponse == undefined || queryResponse == null || queryResponse == "") {
+                alert("Please enter query response");
+                $("#queryResponse").focus();
+                return false;
+            }
+            var queryId = $("#hdnGuestQueryId").val();
+            var sdata = {};
+            sdata.queryResponseValue = queryResponse;
+            sdata.queryIdValue = queryId;
+            $.ajax({
+                url: '/Admin/SaveQueryResponse',
+                type: "POST",
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                data: JSON.stringify(sdata),
+                success: function (myresult) {
+                    if (myresult == "error") {
+                        alert("An error occured");
+                    }
+                    else {
+                        alert("Query saved successfully");
+
+                    }
+
+                },
+                error: function () {
+                    alert("An error occured");
+                }
+            });
+        });
+    });
+
+</script>
+<link href="~/Content/css/Common.css" rel="stylesheet" />
+<h2 class="clsSetHeaderDesc">Guest Query</h2>
+<div>
+    <fieldset>
+        <legend><b>Guest Query</b></legend>
+
+        <table class="clsTableLeftMargin" cellspacing="10" cellpadding="10">
+
+            <tr>
+                <td><b> Query Heading</b></td>
+                <td>:</td>
+                <td>@Model.QueryHeading</td>
+            </tr>
+            <tr>
+                <td><b>Query Description</b></td>
+                <td>:<input type="hidden" id="hdnGuestQueryId" value="@Model.Id" /></td>
+                <td>@Model.QueryDescription</td>
+            </tr>
+            <tr>
+                <td><b>Add Query Response</b></td>
+                <td>:</td>
+                <td><textarea id="queryResponse">@Model.AdminResponseMessage</textarea></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td>
+                    <input type="button" id="btnSaveQuery" value="Add Query Response" class="createbutton" />
+                    <a href="/Admin/Dashboard" class="cancelbutton">Cancel</a>
+                </td>
+            </tr>
+        </table>
+
+    </fieldset>
+</div>

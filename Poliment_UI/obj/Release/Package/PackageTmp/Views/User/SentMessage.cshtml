@@ -1,0 +1,88 @@
+﻿@model Poliment_UI.Models.AdminMessageVM
+@{
+    ViewBag.Title = "SentMessage";
+    Layout = "~/Views/Shared/_UserMenuAfterLogin.cshtml";
+}
+<style type="text/css">
+    .webgrid {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        font-size: 1.2em;
+        width: 100%;
+        height: 270px;
+        display: table;
+        border-collapse: separate;
+        border: solid 1px #98BF21;
+        background-color: white;
+    }
+
+    .webgrid-table td, th {
+        border: 1px solid #98BF21;
+        padding: 3px 7px 2px;
+    }
+
+    .webgrid-header {
+        background-color: #A7C942;
+        color: #FFFFFF;
+        padding-bottom: 4px;
+        padding-top: 5px;
+        text-align: left;
+    }
+
+    .webgrid-footer {
+    }
+
+    .webgrid-row-style {
+        padding: 3px 7px 2px;
+    }
+
+    .webgrid-alternating-row {
+        background-color: #EAF2D3;
+        padding: 3px 7px 2px;
+    }
+    .clsSetHeaderDesc{
+    margin-top: 35px;
+    margin-left: 195px;
+    }
+</style>
+<h2 class="clsSetHeaderDesc">Sent Message</h2>
+<div>
+    @if (Model.UserMessageML != null && Model.UserMessageML.Count > 0)
+    {
+
+        WebGrid grid = new WebGrid(rowsPerPage: Model.PageSize);
+        grid.Bind(Model.UserMessageML,
+        autoSortAndPage: false,
+        rowCount: Model.TotalRows);
+
+        @grid.GetHtml(
+ fillEmptyRows: false,
+ tableStyle: "webgrid",
+ alternatingRowStyle: "webgrid-alternating-row",
+ headerStyle: "webgrid-header",
+ footerStyle: "webgrid-footer",
+ mode: WebGridPagerModes.All,
+ firstText: "<< First",
+ previousText: "< Prev",
+ nextText: "Next >",
+ lastText: "Last >>",
+ columns: new[] {
+ grid.Column("Id",header: "Id", canSort: false),
+ grid.Column("MessageSubject",header: "Message Subject",canSort: false),
+ grid.Column("UserFullName",header: "Sender Name",canSort: false),
+ grid.Column("DisplayCreatedDate",header: "Message Date(DD-MM-YYYY)",canSort: false),
+ grid.Column(header: "Details", format:@<text>  @Html.ActionLink("Details", "MessageDetails",new { id = item.Id },new {target="_blank"})</text>)
+ 
+})
+
+
+
+    }
+    else
+    {
+        if (Model.UserMessageML != null && Model.UserMessageML.Count == 0)
+        {
+            <h2><span style="margin-left:192px;">No record found</span></h2>
+        }
+    }
+</div>
+

@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_UserMenuAfterLogin.cshtml";
+    
+}
+<div>
+    @{
+        if (TempData["NotSuperUser"] != null)
+        {
+            <script type="text/javascript">
+            alert("You are not authorize to use create user functionality");
+            </script>
+            TempData.Remove("NotSuperUser");
+        }
+
+    }
+
+</div>

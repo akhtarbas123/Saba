@@ -1,0 +1,34 @@
+﻿@model Poliment_DL.Model.FrontEndVideoML
+@{
+    ViewBag.Title = "ShowFrontVideo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style type="text/css">
+    .ShowVideo {
+        margin-top: 35px;
+        width: 87%;
+        margin-left: 120px;
+        height: 550px;
+    }
+    .clsDescriptionMargin
+    {
+        margin-left:175px;
+    }
+    .clsSetHeaderDesc{
+    margin-top: 35px;
+    margin-left: 195px;
+    }
+</style>
+<h2 class="clsSetHeaderDesc">Show Front Video</h2>
+<br />
+<div>
+    @if (Model != null)
+    {
+        <span class="clsDescriptionMargin">Video Description: <b>@Model.VideoDescription</b></span>
+        <br />
+        <video class="ShowVideo" controls>
+            <source src="@Model.VideoPath" type="@Model.VideoType">
+            Your browser does not support the video tag.Please update browser.
+        </video>
+    }
+</div>

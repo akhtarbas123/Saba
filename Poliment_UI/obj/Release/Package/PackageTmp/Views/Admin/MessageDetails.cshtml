@@ -1,0 +1,93 @@
+﻿@model Poliment_DL.Model.UserMessageML
+@{
+    ViewBag.Title = "MessageDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/css/SendMessage.css" rel="stylesheet" />
+<style type="text/css">
+    .clsSetHeaderDesc {
+        margin-top: 35px;
+        margin-left: 195px;
+    }
+</style>
+<script src="~/Content/js/AdminMessageDetails.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        Main();
+    });
+</script>
+<h2 class="clsSetHeaderDesc">Message Details</h2>
+
+<div>
+    <fieldset>
+
+        @using (Html.BeginForm("MessageDetails", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <table class="clsSendMessageTable" cellspacing="10" cellpadding="10">
+                <tr>
+                    <td><span class="clsSapnRed">*</span>Message Subject</td>
+                    <td>:</td>
+                    <td><input type="text" id="txtSubject" name="txtSubject" value="@Model.MessageSubject" class="reg-frm-inp" /></td>
+                </tr>
+                <tr>
+                    <td><span class="clsSapnRed">*</span>Message Body</td>
+                    <td>:</td>
+                    <td><textarea id="txtMessagebody" name="txtMessagebody" class="reg-frm-inp">@Model.MessageBody</textarea></td>
+                </tr>
+                @if (!string.IsNullOrEmpty(Model.FileName))
+                {
+                    <tr>
+                        <td>Download Attachment </td>
+                        <td>:</td>
+                        <td><a href="@Model.AttachmentPath" target="_blank">Click here to download</a></td>
+                    </tr>
+                }
+                @if (!string.IsNullOrEmpty(Model.ReplyMessage))
+                {
+                    <tr>
+                        <td>Replied Message</td>
+                        <td>:</td>
+                        <td>@Model.ReplyMessage</td>
+                    </tr>
+                }
+                @if (!string.IsNullOrEmpty(Model.ReplyFileName))
+                {
+                    <tr>
+                        <td>Download Replied File</td>
+                        <td>:</td>
+                        <td><a href="@Model.ReplyFilePath" target="_blank">Click here to download</a></td>
+                    </tr>
+                }
+                <tr>
+                    <td><input type="hidden" id="hdnId" name="hdnId" value="@Model.Id" /></td>
+                    <td></td>
+                    <td><a href="javascript:void(0)" id="ReplyMessage">Reply this message</a></td>
+                </tr>
+                <tr id="RowReplyMessage">
+                    <td><span class="clsSapnRed">*</span>Reply Message</td>
+                    <td>:</td>
+                    <td><textarea id="txtReplyMessagebody" name="txtReplyMessagebody" class="reg-frm-inp"></textarea></td>
+                </tr>
+                <tr id="RowReplyAttachment">
+                    <td>Attach File</td>
+                    <td>:</td>
+                    <td><input type="file" id="ReplyFile" name="ReplyFile" /></td>
+                </tr>
+                <tr id="RowSendMessage">
+                    <td></td>
+                    <td></td>
+                    <td>
+
+                        <input type="submit" id="btnSendMessage" class="createbutton" value="Send" />
+                        <a href="/Admin/Dashboard" id="btnCancelSendMessage" class="cancelbutton">Cancel</a>
+                    </td>
+                </tr>
+            </table>
+
+        }
+
+
+    </fieldset>
+</div>
+

@@ -1,0 +1,411 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PoliModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="PL_Admin">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="50" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" />
+    <Property Name="UserName" Type="varchar" MaxLength="50" />
+    <Property Name="Password" Type="varchar" MaxLength="50" />
+    <Property Name="DOB" Type="date" />
+    <Property Name="Gender" Type="varchar" MaxLength="50" />
+    <Property Name="PoliticalParty" Type="varchar" MaxLength="150" />
+    <Property Name="Mobile" Type="varchar" MaxLength="20" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDelete" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifyDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="ModifyBy" Type="varchar" MaxLength="50" />
+    <Property Name="AdminRole" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PL_AdminDevelopmentWork">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DevelopmentHeading" Type="nvarchar" MaxLength="2000" />
+    <Property Name="DevelopmentDescription" Type="nvarchar(max)" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifyDate" Type="datetime" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDeleted" Type="bit" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="ModifyBy" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="PL_AdminMessage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MessageBody" Type="nvarchar(max)" />
+    <Property Name="FileName" Type="varchar" MaxLength="150" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDeleted" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="ModifyDate" Type="datetime" />
+    <Property Name="ModifyBy" Type="varchar" MaxLength="50" />
+    <Property Name="UserName" Type="varchar" MaxLength="80" />
+    <Property Name="MessageSubject" Type="nvarchar" MaxLength="800" />
+  </EntityType>
+  <EntityType Name="PL_AdminNews">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NewsHeading" Type="nvarchar" MaxLength="2000" />
+    <Property Name="NewsDescription" Type="nvarchar(max)" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifyDate" Type="datetime" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDeleted" Type="bit" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="ModifyBy" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="PL_AdminOtp">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AdminId" Type="int" Nullable="false" />
+    <Property Name="Mobile" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="OtpValue" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ExpiredDate" Type="datetime" Nullable="false" />
+    <Property Name="IsExpired" Type="bit" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDeleted" Type="bit" />
+    <Property Name="Modifydate" Type="datetime" Nullable="false" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="30" />
+    <Property Name="ModifyBy" Type="varchar" MaxLength="30" />
+    <Property Name="UpdateCount" Type="int" />
+  </EntityType>
+  <EntityType Name="PL_AdminOtpRecord">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AdminId" Type="int" />
+    <Property Name="Mobile" Type="varchar" MaxLength="20" />
+    <Property Name="OtpValue" Type="int" Nullable="false" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDeleted" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifyDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="ModifyBy" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="PL_Area">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="STATENAME" Type="varchar" MaxLength="50" />
+    <Property Name="DISTRICTNAME" Type="varchar" MaxLength="300" />
+    <Property Name="SUBDISTRICTNAME" Type="varchar" MaxLength="300" />
+    <Property Name="AreaName" Type="varchar" MaxLength="400" />
+  </EntityType>
+  <EntityType Name="PL_Block">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BlockName" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="PL_ContactMessage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FullName" Type="varchar" MaxLength="70" />
+    <Property Name="Mobie" Type="varchar" MaxLength="15" />
+    <Property Name="Email" Type="varchar" MaxLength="70" />
+    <Property Name="Message" Type="nvarchar(max)" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDeleted" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifyDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="ModifyBy" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="PL_FrontEndImage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ImageName" Type="varchar" MaxLength="300" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDeleted" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="ModifyDate" Type="datetime" />
+    <Property Name="ModifyBy" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="PL_FrontEndVideo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VideoName" Type="varchar" MaxLength="300" />
+    <Property Name="VideoType" Type="varchar" MaxLength="30" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDeleted" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="ModifyDate" Type="datetime" />
+    <Property Name="ModifyBy" Type="varchar" MaxLength="50" />
+    <Property Name="VideoDescription" Type="nvarchar" MaxLength="500" />
+    <Property Name="VideoLength" Type="bigint" />
+  </EntityType>
+  <EntityType Name="PL_GuestQuery">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="QueryTypeId" Type="int" />
+    <Property Name="QueryTypeValue" Type="varchar" MaxLength="50" />
+    <Property Name="BlockId" Type="int" />
+    <Property Name="BlockName" Type="varchar" MaxLength="100" />
+    <Property Name="AreaId" Type="int" />
+    <Property Name="AreaName" Type="varchar" MaxLength="100" />
+    <Property Name="Name" Type="varchar" MaxLength="80" />
+    <Property Name="Mobile" Type="varchar" MaxLength="20" />
+    <Property Name="Email" Type="varchar" MaxLength="70" />
+    <Property Name="FourDigitPin" Type="int" />
+    <Property Name="Address" Type="varchar" MaxLength="210" />
+    <Property Name="QueryHeading" Type="nvarchar" MaxLength="210" />
+    <Property Name="QueryDescription" Type="nvarchar(max)" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDeleted" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifyDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="ModifyBy" Type="varchar" MaxLength="50" />
+    <Property Name="AdminResponseMessage" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="PL_ManageHomeScreen">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Heading" Type="nvarchar" MaxLength="300" />
+    <Property Name="ShortDescription" Type="nvarchar" MaxLength="2000" />
+    <Property Name="LongDescription" Type="nvarchar(max)" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDeleted" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifyDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="ModifyBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdateName" Type="nvarchar" MaxLength="300" />
+    <Property Name="AddFirstAddress" Type="nvarchar(max)" />
+    <Property Name="AddSecondAddress" Type="nvarchar(max)" />
+    <Property Name="VotingSurveyHeading" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="PL_User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="50" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" />
+    <Property Name="UserName" Type="varchar" MaxLength="50" />
+    <Property Name="Password" Type="varchar" MaxLength="50" />
+    <Property Name="DOB" Type="date" />
+    <Property Name="Gender" Type="varchar" MaxLength="25" />
+    <Property Name="Mobile" Type="varchar" MaxLength="25" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="Image" Type="varchar" MaxLength="200" />
+    <Property Name="Designation" Type="varchar" MaxLength="300" />
+    <Property Name="PoliticalParty" Type="varchar" MaxLength="100" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDeleted" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifyDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="ModifyBy" Type="varchar" MaxLength="50" />
+    <Property Name="BlockId" Type="int" />
+    <Property Name="BlockName" Type="varchar" MaxLength="200" />
+    <Property Name="AreaId" Type="int" />
+    <Property Name="AreaName" Type="varchar" MaxLength="300" />
+    <Property Name="IsSuperUser" Type="bit" />
+    <Property Name="UserRole" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="PL_UserBankDetails">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="AccountNumber" Type="varchar" MaxLength="50" />
+    <Property Name="IfscCode" Type="varchar" MaxLength="20" />
+    <Property Name="BankName" Type="varchar" MaxLength="100" />
+    <Property Name="BranchAddress" Type="varchar" MaxLength="400" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDeleted" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifyDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="ModifyBy" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="PL_UserMessage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MessageSubject" Type="nvarchar" MaxLength="400" />
+    <Property Name="MessageBody" Type="nvarchar(max)" />
+    <Property Name="FileName" Type="varchar" MaxLength="150" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDeleted" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="ModifyDate" Type="datetime" />
+    <Property Name="ModifyBy" Type="varchar" MaxLength="50" />
+    <Property Name="UserFullName" Type="varchar" MaxLength="250" />
+    <Property Name="ReplyMessage" Type="nvarchar(max)" />
+    <Property Name="ReplyFileName" Type="varchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="PL_UserOtp">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="Mobile" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="OtpValue" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ExpiredDate" Type="datetime" Nullable="false" />
+    <Property Name="IsExpired" Type="bit" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDeleted" Type="bit" />
+    <Property Name="Modifydate" Type="datetime" Nullable="false" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="30" />
+    <Property Name="ModifyBy" Type="varchar" MaxLength="30" />
+    <Property Name="UpdateCount" Type="int" />
+  </EntityType>
+  <EntityType Name="PL_UserOtpRecord">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="Mobile" Type="varchar" MaxLength="20" />
+    <Property Name="OtpValue" Type="int" Nullable="false" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDeleted" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifyDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="ModifyBy" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="PL_VidhanSabhaVoters">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="150" />
+    <Property Name="Mobile" Type="varchar" MaxLength="25" />
+    <Property Name="Gender" Type="varchar" MaxLength="25" />
+    <Property Name="VoterId" Type="varchar" MaxLength="50" />
+    <Property Name="Address" Type="varchar" MaxLength="2000" />
+    <Property Name="PinCode" Type="int" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDeleted" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifyDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="ModifyBy" Type="varchar" MaxLength="50" />
+    <Property Name="BlockId" Type="int" />
+    <Property Name="BlockName" Type="varchar" MaxLength="200" />
+    <Property Name="AreaId" Type="int" />
+    <Property Name="AreaName" Type="varchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="PL_VoiceCallDetails">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FileName" Type="varchar" MaxLength="500" />
+    <Property Name="AllUser" Type="varchar" MaxLength="30" />
+    <Property Name="BlockId" Type="varchar" MaxLength="20" />
+    <Property Name="Hour" Type="int" />
+    <Property Name="Minutes" Type="int" />
+    <Property Name="Seconds" Type="int" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDeleted" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifyDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="ModifyBy" Type="varchar" MaxLength="50" />
+    <Property Name="TotalSentNumber" Type="int" />
+  </EntityType>
+  <EntityType Name="PL_VotingSurvey">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BlockId" Type="int" />
+    <Property Name="BlockName" Type="varchar" MaxLength="100" />
+    <Property Name="AreaId" Type="int" />
+    <Property Name="AreaName" Type="varchar" MaxLength="100" />
+    <Property Name="Name" Type="varchar" MaxLength="80" />
+    <Property Name="Mobile" Type="varchar" MaxLength="20" />
+    <Property Name="Address" Type="varchar" MaxLength="210" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDeleted" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifyDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="ModifyBy" Type="varchar" MaxLength="50" />
+    <Property Name="AdminResponseMessage" Type="varchar(max)" />
+    <Property Name="VoterIdNumber" Type="varchar" MaxLength="40" />
+    <Property Name="Message" Type="varchar" MaxLength="210" />
+  </EntityType>
+  <EntityType Name="SentSmsDetails">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AllUser" Type="varchar" MaxLength="20" />
+    <Property Name="BlockId" Type="varchar" MaxLength="10" />
+    <Property Name="SentSms" Type="nvarchar(max)" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDeleted" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifyDate" Type="datetime" />
+    <Property Name="TotalSentNumber" Type="int" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="ModifyBy" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityContainer Name="PoliModelStoreContainer">
+    <EntitySet Name="PL_Admin" EntityType="Self.PL_Admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PL_AdminDevelopmentWork" EntityType="Self.PL_AdminDevelopmentWork" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PL_AdminMessage" EntityType="Self.PL_AdminMessage" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PL_AdminNews" EntityType="Self.PL_AdminNews" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PL_AdminOtp" EntityType="Self.PL_AdminOtp" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PL_AdminOtpRecord" EntityType="Self.PL_AdminOtpRecord" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PL_Area" EntityType="Self.PL_Area" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PL_Block" EntityType="Self.PL_Block" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PL_ContactMessage" EntityType="Self.PL_ContactMessage" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PL_FrontEndImage" EntityType="Self.PL_FrontEndImage" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PL_FrontEndVideo" EntityType="Self.PL_FrontEndVideo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PL_GuestQuery" EntityType="Self.PL_GuestQuery" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PL_ManageHomeScreen" EntityType="Self.PL_ManageHomeScreen" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PL_User" EntityType="Self.PL_User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PL_UserBankDetails" EntityType="Self.PL_UserBankDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PL_UserMessage" EntityType="Self.PL_UserMessage" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PL_UserOtp" EntityType="Self.PL_UserOtp" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PL_UserOtpRecord" EntityType="Self.PL_UserOtpRecord" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PL_VidhanSabhaVoters" EntityType="Self.PL_VidhanSabhaVoters" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PL_VoiceCallDetails" EntityType="Self.PL_VoiceCallDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PL_VotingSurvey" EntityType="Self.PL_VotingSurvey" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SentSmsDetails" EntityType="Self.SentSmsDetails" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

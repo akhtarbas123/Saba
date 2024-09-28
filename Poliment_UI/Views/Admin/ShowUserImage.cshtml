@@ -1,0 +1,26 @@
+﻿@model Poliment_UI.Models.CreateUserVM
+@{
+    ViewBag.Title = "ShowUserImage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style type="text/css">
+    .ShowImage {
+        margin-top: 35px;
+        width: 20%;
+        margin-left: 445px;
+        height: 250px;
+    }
+
+    .clsSetHeaderDesc {
+        margin-top: 35px;
+        margin-left: 195px;
+    }
+</style>
+<h2 class="clsSetHeaderDesc">User Image</h2>
+<div>
+    @if (Model != null)
+    {
+        <img src="@Model.Image" class="ShowImage" alt="Image not found" />
+    }
+
+</div>

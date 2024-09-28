@@ -1,0 +1,137 @@
+﻿@model Poliment_UI.Models.HomeVM
+@{
+    ViewBag.Title = "GetFrontVideo";
+    Layout = "~/Views/Shared/_LayoutBeforeLogin.cshtml";
+}
+<style type="text/css">
+    .pran-bg {
+        background-color: #deebe3;
+    }
+
+    .pran-bg2 {
+        background-color: #fff;
+    }
+
+    .container {
+        width: 960px;
+        margin: 0 auto;
+    }
+
+    .createbutton {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 5px 18px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+
+    .cancelbutton {
+        background-color: #777620;
+        border: none;
+        color: white;
+        padding: 5px 18px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+    .ShowVideo {
+        margin-top: 35px;
+        width: 87%;
+        margin-left: 120px;
+        height: 550px;
+    }
+    .clsDescriptionMargin
+    {
+        margin-left:175px;
+    }
+</style>
+
+
+<div>
+    <h3><span style=" margin-left:485px;">My Videos</span></h3>
+    @{
+        if (Model.FrontEndVideoML.Count > 0)
+        {
+            int num = 1;
+            string videoPath = string.Empty;
+            string videoType = string.Empty;
+            foreach (var item in Model.FrontEndVideoML)
+            {
+                videoPath = Model.AbsolutePath + "AdminVideo/" + item.VideoName;
+                videoType = "video/" + item.VideoType;
+                if (num % 2 == 0)
+                {
+                    <div class="pran-bg2">
+                        <span class="clsDescriptionMargin">Video Description: <b>@item.VideoDescription</b></span>
+                        <br /><br />
+                        <video class="ShowVideo" controls>
+                            <source src="@videoPath" type="@videoType">
+                            <span> Your browser does not support the video tag.Please update browser.</span>
+                        </video>
+                    </div>
+                    num++;
+                }
+                else
+                {
+                    <div class="pran-bg">
+                        <span class="clsDescriptionMargin">Video Description: <b>@item.VideoDescription</b></span>
+                        <br /><br />
+                        <video class="ShowVideo" controls>
+                            <source src="@videoPath" type="@videoType">
+                            Your browser does not support the video tag.Please update browser.
+                        </video>
+                    </div>
+                    num++;
+                }
+            }
+            int pageValue = Convert.ToInt32(ViewBag.PageValue);
+            string nextRedirectPath = string.Empty;
+            string previousRedirectPath = string.Empty;
+
+            if (Model.FrontEndVideoML.Count > 0)
+            {
+                if (pageValue == 1)
+                {
+                    nextRedirectPath = Model.AbsolutePath + "Home/GetFrontVideo/2";
+                    <table cellspacing="0" cellpadding="0" style="margin-left:900px;">
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><a href="@nextRedirectPath" class="createbutton">Next</a></td>
+                        </tr>
+                    </table>
+
+                }
+                else
+                {
+                    int previousPageValue = pageValue - 1;
+                    pageValue = pageValue + 1;
+                    <table cellspacing="10" cellpadding="0" style="margin-left:900px;">
+                        <tr>
+                            <td><a href="/Home/GetFrontVideo/@previousPageValue" class="cancelbutton">Previous</a></td>
+                            <td></td>
+                            <td></td>
+                            <td><a href="/Home/GetFrontVideo/@pageValue" class="createbutton">Next</a></td>
+                        </tr>
+                    </table>
+
+                }
+            }
+        }
+        else
+        {
+            <div style="margin-top:277px;margin-left:485px;font-size:x-large;">
+                <span><b>No record found</b></span>
+            </div>
+        }
+    }
+</div>

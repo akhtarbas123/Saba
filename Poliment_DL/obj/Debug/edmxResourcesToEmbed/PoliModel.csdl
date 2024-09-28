@@ -1,0 +1,411 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PoliModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="PL_Admin">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DOB" Type="DateTime" Precision="0" />
+    <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PoliticalParty" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Mobile" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ModifyBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AdminRole" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="PL_Block">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BlockName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="PoliEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="PL_Admin" EntityType="Self.PL_Admin" />
+    <EntitySet Name="PL_Block" EntityType="Self.PL_Block" />
+    <EntitySet Name="PL_User" EntityType="PoliModel.PL_User" />
+    <EntitySet Name="PL_UserMessage" EntityType="PoliModel.PL_UserMessage" />
+    <EntitySet Name="PL_AdminMessage" EntityType="PoliModel.PL_AdminMessage" />
+    <EntitySet Name="PL_FrontEndImage" EntityType="PoliModel.PL_FrontEndImage" />
+    <EntitySet Name="PL_ManageHomeScreen" EntityType="PoliModel.PL_ManageHomeScreen" />
+    <EntitySet Name="PL_AdminOtp" EntityType="PoliModel.PL_AdminOtp" />
+    <EntitySet Name="PL_AdminNews" EntityType="PoliModel.PL_AdminNews" />
+    <EntitySet Name="PL_UserOtp" EntityType="PoliModel.PL_UserOtp" />
+    <EntitySet Name="PL_GuestQuery" EntityType="PoliModel.PL_GuestQuery" />
+    <EntitySet Name="PL_AdminDevelopmentWork" EntityType="PoliModel.PL_AdminDevelopmentWork" />
+    <EntitySet Name="PL_ContactMessage" EntityType="PoliModel.PL_ContactMessage" />
+    <EntitySet Name="PL_FrontEndVideo" EntityType="PoliModel.PL_FrontEndVideo" />
+    <EntitySet Name="PL_VotingSurvey" EntityType="PoliModel.PL_VotingSurvey" />
+    <EntitySet Name="PL_VoiceCallDetails" EntityType="PoliModel.PL_VoiceCallDetails" />
+    <EntitySet Name="SentSmsDetails" EntityType="PoliModel.SentSmsDetail" />
+    <EntitySet Name="PL_AdminOtpRecord" EntityType="PoliModel.PL_AdminOtpRecord" />
+    <EntitySet Name="PL_UserOtpRecord" EntityType="PoliModel.PL_UserOtpRecord" />
+    <EntitySet Name="PL_UserBankDetails" EntityType="PoliModel.PL_UserBankDetails" />
+    <EntitySet Name="PL_VidhanSabhaVoters" EntityType="PoliModel.PL_VidhanSabhaVoters" />
+    <EntitySet Name="PL_Area" EntityType="PoliModel.PL_Area" />
+  </EntityContainer>
+  <EntityType Name="PL_User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DOB" Type="DateTime" Precision="0" />
+    <Property Name="Gender" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Mobile" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Image" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="Designation" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="PoliticalParty" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ModifyBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BlockId" Type="Int32" />
+    <Property Name="BlockName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="AreaId" Type="Int32" />
+    <Property Name="AreaName" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="IsSuperUser" Type="Boolean" />
+    <Property Name="UserRole" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="PL_UserMessage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MessageSubject" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="MessageBody" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="FileName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifyBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserFullName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="ReplyMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ReplyFileName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="PL_AdminMessage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MessageBody" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="FileName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifyBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserName" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="MessageSubject" Type="String" MaxLength="800" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="PL_FrontEndImage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ImageName" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifyBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="PL_ManageHomeScreen">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Heading" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="ShortDescription" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="LongDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ModifyBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdateName" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="AddFirstAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AddSecondAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="VotingSurveyHeading" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="PL_AdminOtp">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AdminId" Type="Int32" Nullable="false" />
+    <Property Name="Mobile" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="OtpValue" Type="Int32" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ExpiredDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IsExpired" Type="Boolean" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <Property Name="Modifydate" Type="DateTime" Precision="3" Nullable="false" />
+    <Property Name="CreatedBy" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="ModifyBy" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="UpdateCount" Type="Int32" />
+  </EntityType>
+  <EntityType Name="PL_AdminNews">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="NewsHeading" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="NewsDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ModifyBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="PL_UserOtp">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="Mobile" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="OtpValue" Type="Int32" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ExpiredDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IsExpired" Type="Boolean" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <Property Name="Modifydate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="ModifyBy" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="UpdateCount" Type="Int32" />
+  </EntityType>
+  <EntityType Name="PL_GuestQuery">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="QueryTypeId" Type="Int32" />
+    <Property Name="QueryTypeValue" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BlockId" Type="Int32" />
+    <Property Name="BlockName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="AreaId" Type="Int32" />
+    <Property Name="AreaName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Name" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="Mobile" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+    <Property Name="FourDigitPin" Type="Int32" />
+    <Property Name="Address" Type="String" MaxLength="210" FixedLength="false" Unicode="false" />
+    <Property Name="QueryHeading" Type="String" MaxLength="210" FixedLength="false" Unicode="true" />
+    <Property Name="QueryDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ModifyBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AdminResponseMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="PL_AdminDevelopmentWork">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DevelopmentHeading" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="DevelopmentDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ModifyBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="PL_ContactMessage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FullName" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+    <Property Name="Mobie" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+    <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ModifyBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="PL_FrontEndVideo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="VideoName" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="VideoType" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifyBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="VideoDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="VideoLength" Type="Int64" />
+  </EntityType>
+  <EntityType Name="PL_VotingSurvey">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BlockId" Type="Int32" />
+    <Property Name="BlockName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="AreaId" Type="Int32" />
+    <Property Name="AreaName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Name" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="Mobile" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="210" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ModifyBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AdminResponseMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="VoterIdNumber" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="Message" Type="String" MaxLength="210" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="PL_VoiceCallDetails">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FileName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="AllUser" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="BlockId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Hour" Type="Int32" />
+    <Property Name="Minutes" Type="Int32" />
+    <Property Name="Seconds" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ModifyBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TotalSentNumber" Type="Int32" />
+  </EntityType>
+  <EntityType Name="SentSmsDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AllUser" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="BlockId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="SentSms" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+    <Property Name="TotalSentNumber" Type="Int32" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ModifyBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="PL_AdminOtpRecord">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AdminId" Type="Int32" />
+    <Property Name="Mobile" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="OtpValue" Type="Int32" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ModifyBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="PL_UserOtpRecord">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="Mobile" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="OtpValue" Type="Int32" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ModifyBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="PL_UserBankDetails">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="AccountNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IfscCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="BankName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="BranchAddress" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ModifyBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="PL_VidhanSabhaVoters">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Mobile" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Gender" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="VoterId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="PinCode" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ModifyBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BlockId" Type="Int32" />
+    <Property Name="BlockName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="AreaId" Type="Int32" />
+    <Property Name="AreaName" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="PL_Area">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="STATENAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DISTRICTNAME" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="SUBDISTRICTNAME" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="AreaName" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

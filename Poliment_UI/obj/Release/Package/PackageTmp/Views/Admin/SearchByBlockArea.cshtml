@@ -1,0 +1,140 @@
+﻿@model Poliment_UI.Models.CreateUserVM
+@{
+    ViewBag.Title = "SearchByBlockArea";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Content/js/Dashboard.js"></script>
+<link href="~/Content/css/SearchByBlockArea.css" rel="stylesheet" />
+<style type="text/css">
+    .clsSpanRed {
+        color: #F00;
+    }
+
+    .clsTableLeftMargin {
+        margin-left: 300px;
+    }
+
+    .IncreaseTextWidth {
+        width: 470px;
+    }
+
+    .clsHomeCenter {
+        margin-left: 485px;
+    }
+    .clsSetHeaderDesc{
+    margin-top: 35px;
+    margin-left: 195px;
+    }
+</style>
+<script type="text/javascript">
+    $(document).ready(function () {
+        GetAreaByBlockForSearch();
+        ConfirmDeleteUser();
+        $('#btnSearchByBlock').click(function () {
+            var blockId = $("#BlockName option:selected").val();
+            if (blockId == undefined || blockId == null || blockId == "") {
+                alert("Please select block to serach");
+                return false;
+            }
+
+        });
+        $('.clsDeActivate').click(function () {
+            var result = confirm("Are you sure want to deactivate this user");
+            if (result == false) {
+                return false;
+            }
+        });
+
+    });
+</script>
+<h2 class="clsSetHeaderDesc">Search user of Block or Block and Area </h2>
+<div>
+    @{
+        if (TempData["DeActivateUser"] != null)
+        {
+    <script type="text/javascript">
+            alert("User deactivated successfully");
+    </script>
+            TempData.Remove("DeActivateUser");
+        }
+
+    }
+</div>
+@using (Html.BeginForm("SearchByBlockArea", "Admin", FormMethod.Get))
+{
+    <table class="clsTableLeftMargin" cellspacing="15" cellpadding="0">
+        <tr>
+            <td class="frm-text">Select Block<span class="clsSpanRed">*</span></td>
+            <td>:</td>
+            <td>@Html.DropDownListFor(x => x.BlockName, new SelectList(Model.BlockML, "Id", "BlockName"), "Select", new { @class = "layoutdropdown" })</td>
+        </tr>
+        <tr>
+            <td class="frm-text">Select Area</td>
+            <td>:</td>
+            <td>@Html.DropDownListFor(x => x.AreaName, new SelectList(Model.AreaML, "Id", "AreaName"), "Select", new { @class = "layoutdropdown" })</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>
+                <input type="submit" id="btnSearchByBlock" class="createbutton" value="Search" />
+                <a href="/Admin/SearchByBlockArea" class="cancelbutton">Reset</a>
+            </td>
+        </tr>
+    </table>
+
+    <br />
+    <span class="errorMessage">@ViewBag.ErrorMessage</span>
+}
+<br />
+<br />
+
+<div>
+    @if (Model.ListUserML != null && Model.ListUserML.Count > 0)
+    {
+        WebGrid grid = new WebGrid(rowsPerPage: Model.PageSize);
+        grid.Bind(Model.ListUserML,
+        autoSortAndPage: false,
+        rowCount: Model.TotalRows);
+
+        @grid.GetHtml(
+ htmlAttributes: new { @id = "WebGrid" },
+ fillEmptyRows: false,
+ tableStyle: "webgrid",
+ alternatingRowStyle: "webgrid-alternating-row",
+ headerStyle: "webgrid-header",
+ footerStyle: "webgrid-footer",
+ mode: WebGridPagerModes.All,
+ firstText: "<< First",
+ previousText: "< Prev",
+ nextText: "Next >",
+ lastText: "Last >>",
+ columns: new[] {
+ grid.Column("Id",header: "Id", canSort: false),
+ grid.Column("FirstName",header: "First Name"),
+ grid.Column("LastName",header: "Last Name"),
+ grid.Column("UserName",header: "User Name"),
+ grid.Column("Mobile",header: "Mobile",canSort: false),
+ grid.Column("Email",header: "Email Id",canSort: false),
+ grid.Column("DOB",header: "Birth Date",canSort: false),
+ grid.Column("Gender",header: "Gender",canSort: false),
+ grid.Column("Designation",header: "User Designation",canSort: false),
+ grid.Column("PoliticalParty",header: "Political Party",canSort: false),
+ grid.Column(header: "Super User",canSort: false,format:@<text>@(item.IsSuperUser ? "Yes" : "No")</text>),
+ grid.Column(header: "Show Image", format:@<text>  @Html.ActionLink("Show Image", "ShowUserImage",new { id = item.Id },new {target="_blank"})</text>),
+ grid.Column(header: "Bank Details", format:@<text>  @Html.ActionLink("Bank Details", "UserBankDetails",new { id = item.Id },new {target="_blank"})</text>),
+ grid.Column(header: "Edit", format:@<text>  @Html.ActionLink("Edit", "EditUser",new { id = item.Id },new {target="_blank"})</text>),
+ grid.Column(header: "DeActivate User", format:@<text>  @Html.ActionLink("DeActivate", "DeactivateActiveUser",new { id = item.Id },new { @class="clsDeActivate",target="_blank"})</text>),
+ grid.Column(header: "Delete", format:@<text>  @Html.ActionLink("Delete", "DeleteUser",new { id = item.Id },new { @class="clsDelete",target="_blank"})</text>)
+
+})
+
+    }
+    else
+    {
+        if (Model.ListUserML != null && Model.ListUserML.Count == 0)
+        {
+            <h2><span style="margin-left:192px;">No record found</span></h2>
+        }
+    }
+</div>

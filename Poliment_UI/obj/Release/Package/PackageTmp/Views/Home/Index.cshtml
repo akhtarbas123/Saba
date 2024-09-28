@@ -1,0 +1,157 @@
+﻿@model Poliment_UI.Models.HomeVM
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutBeforeLogin.cshtml";
+}
+<style type="text/css">
+     .createbutton {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 5px 18px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+
+    .cancelbutton {
+        background-color: #777620;
+        border: none;
+        color: white;
+        padding: 5px 18px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+
+</style>
+<div class="banner-bg">
+    <div class="slide-bg">
+        <div id="fwslider">
+            <div class="slider_container">
+                @if (Model.FrontEndImageML != null && Model.FrontEndImageML.Count > 0)
+                {
+                    string imagePath = string.Empty;
+                    foreach (var item in Model.FrontEndImageML)
+                    {
+                        imagePath = Model.AbsolutePath + "FrontImage/" + item.ImageName;
+                <div class="slide">
+                    <img src="@imagePath" height="550" width="100%" alt="" />
+                </div>
+                    }
+                }
+            </div>
+            <div class="timers"></div>
+
+            <div class="slidePrev"><span></span></div>
+            <div class="slideNext"><span></span></div>
+
+        </div>
+    </div>
+
+
+
+</div>
+<div class="sec-top">
+    <div class="container">
+        <h3>@Model.ManageHomeScreenML.Heading</h3>
+        <h6>@Model.ManageHomeScreenML.ShortDescription</h6>
+
+    </div>
+</div>
+@{
+    string adminName = string.Empty;
+    if (Session["UpdatedAdminName"] != null)
+    {
+        adminName = Convert.ToString(Session["UpdatedAdminName"]);
+    }
+}
+<div class="home-about-bg">
+    <div class="container">
+        <div class="home-aboutleft">
+            <div class="about-heading">About @adminName</div>
+            <div class="about-content">
+                <span class="about-img"><img src="~/images/AboutStatic.jpg" width="240" height="240" /></span>
+                @Model.ManageHomeScreenML.LongDescription
+
+            </div>
+        </div>
+        <div class="new-box">
+            <div class="latest-news">latest News</div>
+            <div class="news-innerbox" style="overflow-y:scroll;height:400px;">
+                @{
+                    if (Model.AdminNewsML != null)
+                    {
+                        if (Model.AdminNewsML.Count > 0)
+                        {
+                            foreach (var item in Model.AdminNewsML)
+                            {
+                                <div class="news-block">
+
+                                    <a target="_blank" href="/Home/ShowAdminNews/@item.Id">
+                                        @item.NewsHeading
+                                    </a><br /><br />
+                                    <p class="green">@item.DisplayCreatedDate</p>
+                                </div>
+                            }
+                            int pageValue = Convert.ToInt32(ViewBag.PageValue);
+                            string nextRedirectPath = string.Empty;
+                            string previousRedirectPath = string.Empty;
+
+                            if (Model.AdminNewsML.Count > 0)
+                            {
+                                if (pageValue == 1)
+                                {
+                                    nextRedirectPath = Model.AbsolutePath + "Home/Index/2";
+                                    <table >
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td><a href="@nextRedirectPath" class="createbutton">Next</a></td>
+                                        </tr>
+                                    </table>
+
+                                }
+                                else
+                                {
+                                    int previousPageValue = pageValue - 1;
+                                    pageValue = pageValue + 1;
+                                    <table >
+                                        <tr>
+                                            <td><a href="/Home/Index/@previousPageValue" class="cancelbutton">Previous</a></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td><a href="/Home/Index/@pageValue" class="createbutton">Next</a></td>
+                                        </tr>
+                                    </table>
+
+                                }
+                            }
+                        }
+                        else
+                        {
+                            <span><b>No record found</b></span>
+                        }
+                    }
+                    else
+                    {
+                        <span><b>No record found</b></span>
+                    }
+
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

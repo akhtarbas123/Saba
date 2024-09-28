@@ -1,0 +1,118 @@
+﻿
+@{
+    ViewBag.Title = "SearchByUserName";
+    Layout = "~/Views/Shared/_UserMenuAfterLogin.cshtml";
+}
+
+<link href="~/Content/css/SearchByBlockArea.css" rel="stylesheet" />
+<style type="text/css">
+    .clsSpanRed {
+        color: #F00;
+    }
+
+    .clsTableLeftMargin {
+        margin-left: 300px;
+    }
+
+    .IncreaseTextWidth {
+        width: 470px;
+    }
+
+    .clsHomeCenter {
+        margin-left: 485px;
+    }
+    .clsSetHeaderDesc{
+    margin-top: 35px;
+    margin-left: 195px;
+    }
+</style>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('#btnSearchByUserName').click(function () {
+            var userName = $("#userName").val();
+            if (userName == undefined || userName == null || userName == "") {
+                alert("Please enter user name");
+                $("#userName").focus();
+                return false;
+            }
+        });
+        $('.clsDelete').click(function () {
+            var result = confirm("Are you sure want to delete this user");
+            if (result == false) {
+                return false;
+            }
+        });
+    });
+</script>
+
+<h2 class="clsSetHeaderDesc">Search user by user name </h2>
+@using (Html.BeginForm("SearchByUserName", "User", FormMethod.Get))
+{
+    <table class="clsTableLeftMargin" cellspacing="15" cellpadding="0">
+        <tr>
+            <td class="frm-text">Enter user name<span class="clsSpanRed">*</span></td>
+            <td>:</td>
+            <td><input type="text" id="userName" name="userName" class="reg-frm-inp" /></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>
+                <input type="submit" id="btnSearchByUserName" class="createbutton" value="Search" />
+                <a href="/User/SearchByUserName" class="cancelbutton">Reset</a>
+            </td>
+        </tr>
+    </table>
+
+    <br />
+    <span class="errorMessage">@ViewBag.ErrorMessage</span>
+}
+<br />
+<br />
+
+<div>
+    @if (Model.ListUserML != null && Model.ListUserML.Count > 0)
+    {
+        WebGrid grid = new WebGrid(rowsPerPage: Model.PageSize);
+        grid.Bind(Model.ListUserML,
+        autoSortAndPage: false,
+        rowCount: Model.TotalRows);
+
+        @grid.GetHtml(
+ htmlAttributes: new { @id = "WebGrid" },
+ fillEmptyRows: false,
+ tableStyle: "webgrid",
+ alternatingRowStyle: "webgrid-alternating-row",
+ headerStyle: "webgrid-header",
+ footerStyle: "webgrid-footer",
+ mode: WebGridPagerModes.All,
+ firstText: "<< First",
+ previousText: "< Prev",
+ nextText: "Next >",
+ lastText: "Last >>",
+ columns: new[] {
+ grid.Column("Id",header: "Id", canSort: false),
+ grid.Column("FirstName",header: "First Name"),
+ grid.Column("LastName",header: "Last Name"),
+ grid.Column("UserName",header: "User Name"),
+ grid.Column("Mobile",header: "Mobile",canSort: false),
+ grid.Column("Email",header: "Email Id",canSort: false),
+ grid.Column("DOB",header: "Birth Date",canSort: false),
+ grid.Column("Gender",header: "Gender",canSort: false),
+ grid.Column("Designation",header: "User Designation",canSort: false),
+ grid.Column("PoliticalParty",header: "Political Party",canSort: false),
+ grid.Column(header: "Show Image", format:@<text>  @Html.ActionLink("Show Image", "ShowUserImage",new { id = item.Id },new {target="_blank"})</text>),
+ grid.Column(header: "Delete", format:@<text>  @Html.ActionLink("Delete", "DeleteUser",new { id = item.Id },new { @class="clsDelete"})</text>)
+
+})
+
+    }
+    else
+    {
+        if (Model.ListUserML != null && Model.ListUserML.Count == 0)
+        {
+            <h2><span style="margin-left:192px;">No record found</span></h2>
+        }
+    }
+</div>

@@ -1,0 +1,56 @@
+﻿
+.frm-text{font-size:15px; color:#000;}
+.frm-text span{color:#F00;}
+
+.reg-frm-inp{ width:190px; height:21px; float:left; border:#6d6d6d solid 1px; -moz-border-radius:3px; -webkit-border-radius:3px; border-radius:3px; margin:2px 0px; background-color:#FFF;}
+.reg-right-text{ font-size:15px; line-height:20px; color:#000; padding:2px 0 2px 0;}
+
+.createbutton {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 5px 18px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.cancelbutton {
+    background-color: #777620;
+    border: none;
+    color: white;
+    padding: 5px 18px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.errorMessage{
+    color:red;
+    font-size:large;
+    margin-left:165px;
+}
+ .clsSpanRed {
+        color: #F00;
+    }
+
+ .clsTableLeftMargin {
+        margin-left: 300px;
+    }
+ .IncreaseTextWidth {
+            width: 470px;
+        }
+ .clsHomeCenter{
+     margin-left:485px;
+ }
+ .clsBodyBackGround
+ {
+     background-color:#f1f0f1;
+ }
+/*-------------------------Ending of  Register page--------------------------*/

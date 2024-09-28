@@ -1,0 +1,57 @@
+﻿@model Poliment_DL.Model.UserBankDetailsML
+@{
+    ViewBag.Title = "UserBankDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/css/Common.css" rel="stylesheet" />
+<style type="text/css">
+    .clsSetHeaderDesc {
+        margin-top: 35px;
+        margin-left: 195px;
+    }
+</style>
+<h2 class="clsSetHeaderDesc">User Bank Details</h2>
+<br />
+<div>
+    <fieldset>
+        <legend><b>Bank Details</b></legend>
+
+        @if (!string.IsNullOrEmpty(Model.AccountNumber))
+        {
+            <table class="clsTableLeftMargin" cellspacing="10" cellpadding="10">
+                <tr>
+                    <td>Created Date(DD-MM-YYYY)</td>
+                    <td>:</td>
+                    <td><b>@Model.DisplayCreatedDate</b></td>
+                </tr>
+                <tr>
+                    <td>Account Number</td>
+                    <td>:</td>
+                    <td><b>@Model.AccountNumber</b></td>
+                </tr>
+                <tr>
+                    <td>Ifsc Code</td>
+                    <td>:</td>
+                    <td><b>@Model.IfscCode</b></td>
+                </tr>
+                <tr>
+                    <td>Bank Name</td>
+                    <td>:</td>
+                    <td><b>@Model.BankName</b></td>
+                </tr>
+                <tr>
+                    <td>Branch Address</td>
+                    <td>:</td>
+                    <td><b>@Model.BranchAddress</b></td>
+                </tr>
+            </table>
+        }
+        else
+        {
+            <h3>No record found</h3>
+        }
+
+
+    </fieldset>
+</div>

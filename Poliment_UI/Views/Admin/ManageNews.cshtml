@@ -1,0 +1,188 @@
+﻿@model Poliment_UI.Models.ManageUserInterfaceVM
+@{
+    ViewBag.Title = "ManageNews";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('#btnSaveNews').click(function () {
+            var newsHeading = $("#newsHeading").val();
+            if (newsHeading == undefined || newsHeading == null || newsHeading == "") {
+                alert("Please enter news heading");
+                $("#newsHeading").focus();
+                return false;
+            }
+            var newsDescription = $("#newsDescription").val();
+            if (newsDescription == undefined || newsDescription == null || newsDescription == "") {
+                alert("Please enter news description");
+                $("#newsDescription").focus();
+                return false;
+            }
+
+            var sdata = {};
+            sdata.newsHeadingValue = newsHeading;
+            sdata.newsDescriptionValue = newsDescription;
+            $.ajax({
+                url: '/Admin/ManageNews',
+                type: "POST",
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                data: JSON.stringify(sdata),
+                success: function (myresult) {
+                    if (myresult == "error") {
+                        alert("An error occured");
+                    }
+                    else {
+                        $("#newsHeading").val('');
+                        $("#newsDescription").val('');
+                        alert("News saved successfully");
+                      
+                    }
+
+                },
+                error: function () {
+                    alert("An error occured");
+                }
+            });
+
+
+        });
+
+        $('.clsDeleteNews').click(function () {
+                var result = confirm("Are you sure want to delete this news");
+                if (result == false) {
+                    return false;
+                }
+            });
+
+    });
+
+</script>
+<link href="~/Content/css/Common.css" rel="stylesheet" />
+<style type="text/css">
+    .webgrid {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        font-size: 1.2em;
+        width: 100%;
+        height: 270px;
+        display: table;
+        border-collapse: separate;
+        border: solid 1px #98BF21;
+        background-color: white;
+    }
+
+    .webgrid-table td, th {
+        border: 1px solid #98BF21;
+        padding: 3px 7px 2px;
+    }
+
+    .webgrid-header {
+        background-color: #A7C942;
+        color: #FFFFFF;
+        padding-bottom: 4px;
+        padding-top: 5px;
+        text-align: left;
+    }
+
+    .webgrid-footer {
+    }
+
+    .webgrid-row-style {
+        padding: 3px 7px 2px;
+    }
+
+    .webgrid-alternating-row {
+        background-color: #EAF2D3;
+        padding: 3px 7px 2px;
+    }
+    .clsSetHeaderDesc{
+    margin-top: 35px;
+    margin-left: 195px;
+    }
+</style>
+@{
+    if (ViewBag.NewsDeleted != null)
+    {
+        <script type="text/javascript">
+        alert("News Deleted successfully");
+        </script>
+    }
+
+}
+<h2 class="clsSetHeaderDesc">Manage News</h2>
+
+<div>
+    <fieldset>
+        <legend><b>Manage News</b></legend>
+                 
+            <table class="clsTableLeftMargin" cellspacing="10" cellpadding="10">
+
+                <tr>
+                    <td>News Heading<span class="clsSpanRed">*</span></td>
+                    <td>:</td>
+                    <td><input type="text" id="newsHeading" maxlength="30" name="newsHeading" class="reg-frm-inp IncreaseTextWidth" /></td>
+                </tr>
+                <tr>
+                    <td>News Description<span class="clsSpanRed">*</span></td>
+                    <td>:</td>
+                    <td><textarea id="newsDescription" name="newsDescription" class="reg-frm-inp IncreaseTextWidth"></textarea></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <input type="submit" id="btnSaveNews" class="createbutton" value="Save" />
+                        <a href="/Admin/Dashboard" class="cancelbutton">Cancel</a>
+                    </td>
+                </tr>
+            </table>
+       
+    </fieldset>
+</div>
+<br />
+<div>
+    <a href="/Admin/GetAllNews" style="margin-left:192px;" class="cancelbutton">Get All News</a>
+    <br />
+    <div>
+        @if (Model.AdminNewsML != null && Model.AdminNewsML.Count > 0)
+        {
+
+            WebGrid grid = new WebGrid(rowsPerPage: Model.PageSize);
+            grid.Bind(Model.AdminNewsML,
+            autoSortAndPage: false,
+            rowCount: Model.TotalRows);
+
+            @grid.GetHtml(
+ fillEmptyRows: false,
+ tableStyle: "webgrid",
+ alternatingRowStyle: "webgrid-alternating-row",
+ headerStyle: "webgrid-header",
+ footerStyle: "webgrid-footer",
+ mode: WebGridPagerModes.All,
+ firstText: "<< First",
+ previousText: "< Prev",
+ nextText: "Next >",
+ lastText: "Last >>",
+ columns: new[] {
+ grid.Column("Id",header: "Id", canSort: false),
+ grid.Column("NewsHeading",header: "News Heading",canSort: false),
+ grid.Column("DisplayCreatedDate",header: "Upload Date(DD-MM-YYYY)",canSort: false),
+ grid.Column(header: "Is Active",canSort: false,format:@<text>@(item.IsActive ? "Yes" : "No")</text>),
+ grid.Column(header: "Show News", format:@<text>  @Html.ActionLink("Show News", "ShowAdminNews",new { id = item.Id } , new {target="_blank"})</text>),
+ grid.Column(header: "Delete", format:@<text>  @Html.ActionLink("Delete", "DeleteNews",new { id = item.Id },new {target="_blank",@class="clsDeleteNews" })</text>)
+
+    })
+        }
+        else
+        {
+            if (Model.AdminNewsML != null && Model.AdminNewsML.Count == 0)
+            {
+                <h2><span style="margin-left:192px;">No record found</span></h2>
+            }
+
+        }
+    </div>
+
+
+</div>

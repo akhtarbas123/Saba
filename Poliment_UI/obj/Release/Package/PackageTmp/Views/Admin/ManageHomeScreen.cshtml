@@ -1,0 +1,130 @@
+﻿
+@{
+    ViewBag.Title = "ManageHomeScreen";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Content/js/ManageHomeScreen.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        Main();
+    });
+
+</script>
+<link href="~/Content/css/Common.css" rel="stylesheet" />
+<style type="text/css">
+    .clsSetHeaderDesc {
+        margin-top: 35px;
+        margin-left: 195px;
+    }
+</style>
+<h2 class="clsSetHeaderDesc">Manage Home Screen</h2>
+<div>
+    <fieldset>
+        <legend>Manage Home Screen</legend>
+
+        <table class="clsTableLeftMargin">
+            <tr>
+                <td>Update Name<span class="clsSpanRed">*</span></td>
+                <td>:</td>
+                <td><input type="text" id="adminName" name="adminName" class="reg-frm-inp" maxlength="280" /></td>
+                <td>
+                    <input type="button" id="btnUpdateName" class="createbutton" value="Update Name" />
+                    <a href="/Admin/Dashboard" class="cancelbutton">Cancel</a>
+                </td>
+            </tr>
+
+        </table>
+        <br />
+        <br />
+         <table class="clsTableLeftMargin">
+            <tr>
+                <td>Update Heading<span class="clsSpanRed">*</span></td>
+                <td>:</td>
+                <td><textarea id="txtHeading" class="reg-frm-inp"></textarea></td>
+                <td>
+                    <input type="button" id="btnUpdateHeading" class="createbutton" value="Update Heading" />
+                    <a href="/Admin/Dashboard" class="cancelbutton">Cancel</a>
+                </td>
+            </tr>
+
+        </table>
+        <br />
+        <br />
+        <table class="clsTableLeftMargin">
+            <tr>
+                <td>Update short description<span class="clsSpanRed">*</span></td>
+                <td>:</td>
+                <td><textarea id="txtShortDescription" class="reg-frm-inp"></textarea></td>
+                <td>
+                    <input type="button" id="btnUpdateShortDescription" class="createbutton" value="Update Short Description" />
+                    <a href="/Admin/Dashboard" class="cancelbutton">Cancel</a>
+                </td>
+            </tr>
+
+        </table>
+        <br />
+        <br />
+        <table class="clsTableLeftMargin">
+            <tr>
+                <td>Update long description<span class="clsSpanRed">*</span></td>
+                <td>:</td>
+                <td><textarea id="txtLongDescription" class="reg-frm-inp"></textarea></td>
+                <td>
+                    <input type="button" id="btnUpdateLongDescription" class="createbutton" value="Update Long Description" />
+                    <a href="/Admin/Dashboard" class="cancelbutton">Cancel</a>
+                </td>
+            </tr>
+
+        </table>
+
+
+    </fieldset>
+</div>
+<br />
+<div>
+    <fieldset>
+        <legend>Manage Contact</legend>
+
+        <table class="clsTableLeftMargin">
+            <tr>
+                <td>Update first address</td>
+                <td>:</td>
+                <td><textarea id="firstAddress" name="firstAddress" class="reg-frm-inp"></textarea></td>
+                <td>
+                    <input type="button" id="btnUpdateFirstAddress" class="createbutton" value="Update First Address" />
+                    <a href="/Admin/Dashboard" class="cancelbutton">Cancel</a>
+                </td>
+            </tr>
+
+        </table>
+        <br />
+        <br />
+        <table class="clsTableLeftMargin">
+            <tr>
+                <td>Update second address</td>
+                <td>:</td>
+                <td><textarea id="secondAddress" name="secondAddress" class="reg-frm-inp"></textarea></td>
+                <td>
+                    <input type="button" id="btnUpdateSecondAddress" class="createbutton" value="Update Second Address" />
+                    <a href="/Admin/Dashboard" class="cancelbutton">Cancel</a>
+                </td>
+            </tr>
+
+        </table>
+        <br />
+        <br />
+        <table class="clsTableLeftMargin">
+            <tr>
+                <td>Update voting heading</td>
+                <td>:</td>
+                <td><textarea id="votingHeading" name="votingHeading" class="reg-frm-inp"></textarea></td>
+                <td>
+                    <input type="button" id="btnUpdateVotingHeading" class="createbutton" value="Update Voting Heading" />
+                    <a href="/Admin/Dashboard" class="cancelbutton">Cancel</a>
+                </td>
+            </tr>
+
+        </table>
+
+    </fieldset>
+</div>

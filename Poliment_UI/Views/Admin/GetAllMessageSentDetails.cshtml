@@ -1,0 +1,87 @@
+﻿@model Poliment_UI.Models.ManageUserInterfaceVM
+@{
+    ViewBag.Title = "GetAllMessageSentDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style type="text/css">
+    .webgrid {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        font-size: 1.2em;
+        width: 100%;
+        height: 270px;
+        display: table;
+        border-collapse: separate;
+        border: solid 1px #98BF21;
+        background-color: white;
+    }
+
+    .webgrid-table td, th {
+        border: 1px solid #98BF21;
+        padding: 3px 7px 2px;
+    }
+
+    .webgrid-header {
+        background-color: #A7C942;
+        color: #FFFFFF;
+        padding-bottom: 4px;
+        padding-top: 5px;
+        text-align: left;
+    }
+
+    .webgrid-footer {
+    }
+
+    .webgrid-row-style {
+        padding: 3px 7px 2px;
+    }
+
+    .webgrid-alternating-row {
+        background-color: #EAF2D3;
+        padding: 3px 7px 2px;
+    }
+    .clsSetHeaderDesc{
+    margin-top: 35px;
+    margin-left: 195px;
+    }
+</style>
+<h2 class="clsSetHeaderDesc">Sent Message Details</h2>
+<br /><br />
+<span style="font-size:x-large;margin-left:192px;">Total message sent : <b>@Model.totalMessageSent</b></span>
+<br /><br />
+<div>
+    @if (Model.SentSmsDetailML != null && Model.SentSmsDetailML.Count > 0)
+    {
+
+        WebGrid grid = new WebGrid(rowsPerPage: Model.PageSize);
+        grid.Bind(Model.SentSmsDetailML,
+        autoSortAndPage: false,
+        rowCount: Model.TotalRows);
+
+        @grid.GetHtml(
+ fillEmptyRows: false,
+ tableStyle: "webgrid",
+ alternatingRowStyle: "webgrid-alternating-row",
+ headerStyle: "webgrid-header",
+ footerStyle: "webgrid-footer",
+ mode: WebGridPagerModes.All,
+ firstText: "<< First",
+ previousText: "< Prev",
+ nextText: "Next >",
+ lastText: "Last >>",
+ columns: new[] {
+ grid.Column("Id",header: "Id", canSort: false),
+ grid.Column("SentSms",header: "Message",canSort: false),
+ grid.Column("TotalSentNumber",header: "Sent User Count",canSort: false),
+ grid.Column("DisplayCreatedDate",header: "Created Date(DD-MM-YYYY)",canSort: false)
+})
+    }
+    else
+    {
+        if (Model.SentSmsDetailML != null && Model.SentSmsDetailML.Count == 0)
+        {
+            <h2><span style="margin-left:192px;">No record found</span></h2>
+        }
+    }
+</div>
+

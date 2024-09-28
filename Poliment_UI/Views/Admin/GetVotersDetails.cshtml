@@ -1,0 +1,200 @@
+﻿@model Poliment_UI.Models.CreateUserVM
+@{
+    ViewBag.Title = "GetVotersDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/css/SearchByBlockArea.css" rel="stylesheet" />
+<style type="text/css">
+    .clsSpanRed {
+        color: #F00;
+    }
+
+    .clsTableLeftMargin {
+        margin-left: 300px;
+    }
+
+    .IncreaseTextWidth {
+        width: 470px;
+    }
+
+    .clsHomeCenter {
+        margin-left: 485px;
+    }
+
+    .clsSetHeaderDesc {
+        margin-top: 35px;
+        margin-left: 195px;
+    }
+</style>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#btnSearchVotingSurvey').click(function () {
+            var blockId = $("#BlockName option:selected").val();
+            if (blockId == undefined || blockId == null || blockId == "") {
+                alert("Please select block to serach");
+                return false;
+            }
+
+        });
+        $('#BlockName').change(function () {
+            var blockId = $('#BlockName option:selected').val();
+            var blockName = $('#BlockName option:selected').text();
+            if (blockId != undefined && blockId != null && blockId != "") {
+                var sdata = {};
+                sdata.blockName = blockName;
+                sdata.blockId = blockId;
+                $.ajax({
+                    url: '/Admin/GetArea',
+                    type: "POST",
+                    dataType: 'json',
+                    contentType: 'application/json; charset=utf-8',
+                    data: JSON.stringify(sdata),
+                    success: function (result) {
+                        if (result != undefined) {
+                            var totalLength = result.length;
+                            $('#AreaName').html('');
+                            $('#AreaName').append("<option value=0>Select</option>");
+                            for (var i = 0; i < totalLength; i++) {
+                                $('#AreaName').append("<option value='" + result[i].Id + "'>" + result[i].AreaName + "</option>");
+                            }
+                        }
+
+                    },
+                    error: function () {
+                        alert("An error occured");
+                    }
+                });
+            }
+            else {
+                return false;
+            }
+        });
+        $('.clsDelete').click(function () {
+            var result = confirm("Are you sure want to delete this voter details");
+            if (result == false) {
+                return false;
+            }
+        });
+        var validateBlock = "Yes";
+        $('.clsExportMobileByBlock').click(function () {
+            if (validateBlock == 'Yes') {
+                var blockId = $("#BlockName option:selected").val();
+                if (blockId == 'undefined' || blockId == null || blockId == "") {
+                    alert("Please select block");
+                    return false;
+                }
+            }
+        });
+    });
+</script>
+
+<h2 class="clsSetHeaderDesc">Search Voting Survey</h2>
+@using (Html.BeginForm("GetVotersDetails", "Admin", FormMethod.Get))
+{
+    <table class="clsTableLeftMargin" cellspacing="15" cellpadding="0">
+        <tr>
+            <td class="frm-text">Select Block<span class="clsSpanRed">*</span></td>
+            <td>:</td>
+            <td>@Html.DropDownListFor(x => x.BlockName, new SelectList(Model.BlockML, "Id", "BlockName"), "Select", new { @class = "layoutdropdown" })</td>
+        </tr>
+        <tr>
+            <td class="frm-text">Select Area</td>
+            <td>:</td>
+            <td>@Html.DropDownListFor(x => x.AreaName, new SelectList(Model.AreaML, "Id", "AreaName"), "Select", new { @class = "layoutdropdown" })</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>
+                <input type="submit" id="btnSearchVotingSurvey" class="createbutton" value="Search" />
+                <a href="/Admin/GetVotersDetails" class="cancelbutton">Reset</a>
+                <a href="/Admin/ExportAllVoterMobileNumber" class="cancelbutton">Export All Voter Mobile Number</a>
+            </td>
+        </tr>
+    </table>
+
+    <br />
+    <span class="errorMessage">@ViewBag.ErrorMessage</span>
+}
+    <div>
+        @{
+            if (TempData["VoterDeleted"] != null)
+            {
+                <script type="text/javascript">
+                    alert("Voter details deleted successfully");
+                </script>
+                TempData.Remove("VoterDeleted");
+            }
+
+        }
+        @{
+            if (TempData["VoterDeletedError"] != null)
+            {
+                <script type="text/javascript">
+                    alert("An error occured while deleting voter details.Please try again.");
+                </script>
+                TempData.Remove("VoterDeletedError");
+            }
+
+        }
+    </div>
+<br />
+<br />
+<div>
+    @if (Model.VidhanSabhaVotersML != null && Model.VidhanSabhaVotersML.Count > 0)
+    {
+        string currentUrl = Convert.ToString(Request.Url);
+        int blockId = 0;
+        if (!string.IsNullOrEmpty(currentUrl))
+        {
+            string[] arrUlr = currentUrl.Split('?');
+            string onePostion = arrUlr[1];
+            string[] arrOneSpilit = onePostion.Split('&');
+            string blockName = arrOneSpilit[0];
+            string[] arrBlockName = blockName.Split('=');
+            string blockIdValue = arrBlockName[1];
+            blockId = Convert.ToInt32(blockIdValue);
+
+        }
+        @Html.ActionLink("Export Voter Mobile Number By Block", "ExportAllVoterMobileNumberByBlock", new { id = blockId }, new { @class = "cancelbutton clsExportMobileByBlock" })
+
+        WebGrid grid = new WebGrid(rowsPerPage: Model.PageSize);
+        grid.Bind(Model.VidhanSabhaVotersML,
+        autoSortAndPage: false,
+        rowCount: Model.TotalRows);
+
+        @grid.GetHtml(
+        htmlAttributes: new { @id = "WebGrid" },
+        fillEmptyRows: false,
+        tableStyle: "webgrid",
+        alternatingRowStyle: "webgrid-alternating-row",
+        headerStyle: "webgrid-header",
+        footerStyle: "webgrid-footer",
+        mode: WebGridPagerModes.All,
+        firstText: "<< First",
+        previousText: "< Prev",
+        nextText: "Next >",
+        lastText: "Last >>",
+        columns: new[] {
+        grid.Column("Name",header: "Name",canSort: false),
+        grid.Column("Mobile",header: "Mobile",canSort: false),
+        grid.Column("Gender",header: "Gender",canSort: false),
+        grid.Column("VoterId",header: "Voter Id",canSort: false),
+        grid.Column("Address",header: "Address",canSort: false),
+        grid.Column("PinCode",header: "PinCode",canSort: false),
+        grid.Column("CreatedBy",header: "CreatedBy",canSort: false),
+        grid.Column("DisplayCreatedDate",header: "Created Date(DD-MM-YYYY)",canSort: false),
+        grid.Column("BlockName",header: "BlockName",canSort: false),
+        grid.Column("AreaName",header: "Area Name",canSort: false),
+        grid.Column(header: "Delete", format:@<text>  @Html.ActionLink("Delete", "DeleteVoterDetails",new { id = item.Id },new { @class="clsDelete",target="_blank"})</text>)
+                                                                                                   })
+
+    }
+    else
+    {
+        if (Model.VidhanSabhaVotersML != null && Model.VidhanSabhaVotersML.Count == 0)
+        {
+            <h2><span style="margin-left:192px;">No record found</span></h2>
+        }
+    }
+</div>

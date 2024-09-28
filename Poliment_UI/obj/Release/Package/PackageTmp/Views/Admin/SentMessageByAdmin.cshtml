@@ -1,0 +1,120 @@
+﻿@model Poliment_UI.Models.AdminMessageVM
+@{
+    ViewBag.Title = "SentMessageByAdmin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.clsDeleteAdminSentMsg').click(function () {
+            var result = confirm("Are you sure want to delete this message");
+            if (result == false) {
+                return false;
+            }
+        });
+    });
+</script>
+<style type="text/css">
+    .webgrid {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        font-size: 1.2em;
+        width: 100%;
+        height: 270px;
+        display: table;
+        border-collapse: separate;
+        border: solid 1px #98BF21;
+        background-color: white;
+    }
+
+    .webgrid-table td, th {
+        border: 1px solid #98BF21;
+        padding: 3px 7px 2px;
+    }
+
+    .webgrid-header {
+        background-color: #A7C942;
+        color: #FFFFFF;
+        padding-bottom: 4px;
+        padding-top: 5px;
+        text-align: left;
+    }
+
+    .webgrid-footer {
+    }
+
+    .webgrid-row-style {
+        padding: 3px 7px 2px;
+    }
+
+    .webgrid-alternating-row {
+        background-color: #EAF2D3;
+        padding: 3px 7px 2px;
+    }
+    .clsSetHeaderDesc{
+    margin-top: 35px;
+    margin-left: 195px;
+    }
+</style>
+<h2 class="clsSetHeaderDesc">Sent Message</h2>
+<div>
+    @{
+        if (TempData["SentMessageDeleted"] != null)
+        {
+            <script type="text/javascript">
+                alert("Message deleted successfully");
+            </script>
+            TempData.Remove("SentMessageDeleted");
+        }
+
+    }
+    @{
+        if (TempData["SentMessageError"] != null)
+        {
+            <script type="text/javascript">
+                alert("An error occured.Please try again.");
+            </script>
+            TempData.Remove("SentMessageError");
+        }
+
+    }
+</div>
+<div>
+    @if (Model.UserMessageML != null && Model.UserMessageML.Count > 0)
+    {
+
+        WebGrid grid = new WebGrid(rowsPerPage: Model.PageSize);
+        grid.Bind(Model.UserMessageML,
+        autoSortAndPage: false,
+        rowCount: Model.TotalRows);
+
+    @grid.GetHtml(
+ fillEmptyRows: false,
+ tableStyle: "webgrid",
+ alternatingRowStyle: "webgrid-alternating-row",
+ headerStyle: "webgrid-header",
+ footerStyle: "webgrid-footer",
+ mode: WebGridPagerModes.All,
+ firstText: "<< First",
+ previousText: "< Prev",
+ nextText: "Next >",
+ lastText: "Last >>",
+ columns: new[] {
+ grid.Column("Id",header: "Id", canSort: false),
+ grid.Column("MessageSubject",header: "Message Subject",canSort: false),
+ grid.Column("UserName",header: "User Name",canSort: false),
+ grid.Column("DisplayCreatedDate",header: "Message Date(DD-MM-YYYY)",canSort: false),
+ grid.Column(header: "Details", format:@<text>  @Html.ActionLink("Details", "AdminSentMessageDetails",new { id = item.Id },new {target="_blank"})</text>),
+ grid.Column(header: "Delete", format:@<text>  @Html.ActionLink("Delete", "DeleteAdminSentMessage",new { id = item.Id },new { @class="clsDeleteAdminSentMsg",target="_blank"})</text>)                                                                                                                                           @*grid.Column(header: "Delete", format:@<text>  @Html.ActionLink("Delete", "DeleteUser",new { id = item.Id },new {@class="clsDelete" })</text>)*@
+
+})
+
+    }
+    else
+    {
+        if (Model.UserMessageML != null && Model.UserMessageML.Count == 0)
+        {
+            <h2><span style="margin-left:192px;">No record found</span></h2>
+        }
+    }
+</div>
+
+

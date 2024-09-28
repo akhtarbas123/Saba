@@ -1,0 +1,11 @@
+E:\WorkSpace\Poliment\Poliment_DL\bin\Release\Poliment_DL.dll.config
+E:\WorkSpace\Poliment\Poliment_DL\bin\Release\Poliment_DL.dll
+E:\WorkSpace\Poliment\Poliment_DL\bin\Release\Poliment_DL.pdb
+E:\WorkSpace\Poliment\Poliment_DL\bin\Release\EntityFramework.dll
+E:\WorkSpace\Poliment\Poliment_DL\bin\Release\EntityFramework.SqlServer.dll
+E:\WorkSpace\Poliment\Poliment_DL\bin\Release\EntityFramework.xml
+E:\WorkSpace\Poliment\Poliment_DL\bin\Release\EntityFramework.SqlServer.xml
+E:\WorkSpace\Poliment\Poliment_DL\obj\Release\Poliment_DL.CommonResource.resources
+E:\WorkSpace\Poliment\Poliment_DL\obj\Release\Poliment_DL.csproj.GenerateResource.Cache
+E:\WorkSpace\Poliment\Poliment_DL\obj\Release\Poliment_DL.dll
+E:\WorkSpace\Poliment\Poliment_DL\obj\Release\Poliment_DL.pdb

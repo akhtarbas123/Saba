@@ -1,0 +1,198 @@
+﻿@model Poliment_UI.Models.CreateUserVM
+@{
+    ViewBag.Title = "SearchInActiveUserByBlockArea";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/css/SearchByBlockArea.css" rel="stylesheet" />
+<style type="text/css">
+    .clsSpanRed {
+        color: #F00;
+    }
+
+    .clsTableLeftMargin {
+        margin-left: 300px;
+    }
+
+    .IncreaseTextWidth {
+        width: 470px;
+    }
+
+    .clsHomeCenter {
+        margin-left: 485px;
+    }
+    .clsSetHeaderDesc{
+    margin-top: 35px;
+    margin-left: 195px;
+    }
+</style>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#btnSearchInActiveUser').click(function () {
+            var blockId = $("#BlockName option:selected").val();
+            if (blockId == undefined || blockId == null || blockId == "") {
+                alert("Please select block to serach");
+                return false;
+            }
+
+        });
+        $('.clsDelete').click(function () {
+            var result = confirm("Are you sure want to delete this user");
+            if (result == false) {
+                return false;
+            }
+        });
+        $('#BlockName').change(function () {
+            var blockId = $('#BlockName option:selected').val();
+            var blockName = $('#BlockName option:selected').text();
+            if (blockId != undefined && blockId != null && blockId != "") {
+                var sdata = {};
+                sdata.blockName = blockName;
+                $.ajax({
+                    url: '/Admin/GetArea',
+                    type: "POST",
+                    dataType: 'json',
+                    contentType: 'application/json; charset=utf-8',
+                    data: JSON.stringify(sdata),
+                    success: function (result) {
+                        if (result != undefined) {
+                            var totalLength = result.length;
+                            $('#AreaName').html('');
+                            $('#AreaName').append("<option value=0>Select</option>");
+                            for (var i = 0; i < totalLength; i++) {
+                                $('#AreaName').append("<option value='" + result[i].Id + "'>" + result[i].AreaName + "</option>");
+                            }
+                        }
+
+                    },
+                    error: function () {
+                        alert("An error occured");
+                    }
+                });
+            }
+            else {
+                return false;
+            }
+        });
+    });
+</script>
+<h2 class="clsSetHeaderDesc">Search inactive user of Block or Block and Area </h2>
+
+<div>
+   @{
+       if (ViewBag.UserDeleted != null)
+       {
+        <script type="text/javascript">
+        alert("User deleted successfully");
+        </script>
+       }
+
+}
+     @{
+        if (TempData["UserActivatedSuccessfully"] != null)
+        {
+            <script type="text/javascript">
+            alert("User activated successfully");
+            </script>
+            TempData.Remove("UserActivatedSuccessfully");
+        }
+
+    }
+    @{
+        if (TempData["SuperUserActivatedSuccessfully"] != null)
+        {
+            <script type="text/javascript">
+            alert("Super user activated successfully");
+            </script>
+            TempData.Remove("SuperUserActivatedSuccessfully");
+        }
+
+    }
+    @{
+        if (TempData["UserDeletedSuccessfully"] != null)
+        {
+            <script type="text/javascript">
+            alert("User deleted successfully");
+            </script>
+            TempData.Remove("UserDeletedSuccessfully");
+        }
+
+    }
+</div>
+@using (Html.BeginForm("SearchInActiveUserByBlockArea", "Admin", FormMethod.Get))
+{
+    <table class="clsTableLeftMargin" cellspacing="15" cellpadding="0">
+        <tr>
+            <td class="frm-text">Select Block<span class="clsSpanRed">*</span></td>
+            <td>:</td>
+            <td>@Html.DropDownListFor(x => x.BlockName, new SelectList(Model.BlockML, "Id", "BlockName"), "Select", new { @class = "layoutdropdown" })</td>
+        </tr>
+        <tr>
+            <td class="frm-text">Select Area</td>
+            <td>:</td>
+            <td>@Html.DropDownListFor(x => x.AreaName, new SelectList(Model.AreaML, "Id", "AreaName"), "Select", new { @class = "layoutdropdown" })</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>
+                <input type="submit" id="btnSearchInActiveUser" class="createbutton" value="Search" />
+                <a href="/Admin/SearchInActiveUserByBlockArea" class="cancelbutton">Reset</a>
+            </td>
+        </tr>
+    </table>
+
+}
+<br />
+<br />
+
+<div>
+    @if (Model.ListUserML != null && Model.ListUserML.Count > 0)
+    {
+        WebGrid grid = new WebGrid(rowsPerPage: Model.PageSize);
+        grid.Bind(Model.ListUserML,
+        autoSortAndPage: false,
+        rowCount: Model.TotalRows);
+
+        @grid.GetHtml(
+ htmlAttributes: new { @id = "WebGrid" },
+ fillEmptyRows: false,
+ tableStyle: "webgrid",
+ alternatingRowStyle: "webgrid-alternating-row",
+ headerStyle: "webgrid-header",
+ footerStyle: "webgrid-footer",
+ mode: WebGridPagerModes.All,
+ firstText: "<< First",
+ previousText: "< Prev",
+ nextText: "Next >",
+ lastText: "Last >>",
+ columns: new[] {
+ grid.Column("Id",header: "Id", canSort: false),
+ grid.Column("FirstName",header: "First Name"),
+ grid.Column("LastName",header: "Last Name"),
+ grid.Column("UserName",header: "User Name"),
+ grid.Column("Mobile",header: "Mobile",canSort: false),
+ grid.Column("Email",header: "Email Id",canSort: false),
+ grid.Column("DOB",header: "Birth Date",canSort: false),
+ grid.Column("Gender",header: "Gender",canSort: false),
+ grid.Column("Designation",header: "User Designation",canSort: false),
+ grid.Column("PoliticalParty",header: "Political Party",canSort: false),
+ grid.Column("DisplayCreatedDate",header: "Created Date",canSort: false),
+ grid.Column("CreatedBy",header: "Created By",canSort: false),
+ grid.Column(header: "Show Image", format:@<text> @Html.ActionLink("Show Image", "ShowUserImage",new { id = item.Id },new {target="_blank"})</text>),
+ grid.Column(header: "Activate", format:@<text> @Html.ActionLink("Activate User", "ActivateUser",new { id = item.Id },new {target="_blank"})</text>),
+ grid.Column(header: "Activate", format:@<text> @Html.ActionLink("Activate With Super User", "ActivateWithSuperUser",new { id = item.Id },new {target="_blank"})</text>),
+ grid.Column(header: "Delete", format:@<text> @Html.ActionLink("Delete", "DeleteInActivateUser",new { id = item.Id },new { @class="clsDelete",target="_blank"})</text>)
+
+})
+
+    }
+    else
+    {
+        if (Model.ListUserML != null && Model.ListUserML.Count == 0)
+        {
+            <h2><span style="margin-left:192px;">No record found</span></h2>
+        }
+    }
+</div>
+

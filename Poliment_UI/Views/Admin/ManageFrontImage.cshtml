@@ -1,0 +1,173 @@
+﻿@model Poliment_UI.Models.ManageUserInterfaceVM
+@{
+    ViewBag.Title = "ManageFrontImage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('#btnSaveImage').click(function () {
+            var message = $("#postedFile").val();
+            if (message == null || message == "") {
+                alert("Please select image");
+                return false;
+            }
+            var postedFile = $("#postedFile").val();
+            if (postedFile != undefined && postedFile != null && postedFile != "") {
+                var allowedFormat = "jpeg,jpg,png,gif";
+                var postedFileSplit = postedFile.split('.');
+                var fileType = postedFileSplit[1];
+                if (allowedFormat.indexOf(fileType) != -1) {
+
+                }
+                else {
+                    alert("This file format is not allowed. Allowed file format type is : " + allowedFormat + " ");
+                    return false;
+                }
+            }
+
+        });
+
+        $('.clsDeleteImage').click(function () {
+                var result = confirm("Are you sure want to delete this image");
+                if (result == false) {
+                    return false;
+                }
+            });
+
+    });
+
+</script>
+<link href="~/Content/css/Common.css" rel="stylesheet" />
+<style type="text/css">
+    .webgrid {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        font-size: 1.2em;
+        width: 100%;
+        height: 270px;
+        display: table;
+        border-collapse: separate;
+        border: solid 1px #98BF21;
+        background-color: white;
+    }
+
+    .webgrid-table td, th {
+        border: 1px solid #98BF21;
+        padding: 3px 7px 2px;
+    }
+
+    .webgrid-header {
+        background-color: #A7C942;
+        color: #FFFFFF;
+        padding-bottom: 4px;
+        padding-top: 5px;
+        text-align: left;
+    }
+
+    .webgrid-footer {
+    }
+
+    .webgrid-row-style {
+        padding: 3px 7px 2px;
+    }
+
+    .webgrid-alternating-row {
+        background-color: #EAF2D3;
+        padding: 3px 7px 2px;
+    }
+    .clsSetHeaderDesc{
+    margin-top: 35px;
+    margin-left: 195px;
+    }
+</style>
+@{
+    if (ViewBag.ResultSuccess != null)
+    {
+        <script type="text/javascript">
+            alert("Image uploaded successfully");
+        </script>
+    }
+
+}
+
+@{
+    if (ViewBag.FrontImageDeleted != null)
+    {
+        <script type="text/javascript">
+            alert("Image deleted successfully");
+        </script>
+    }
+
+}
+
+
+<h2 class="clsSetHeaderDesc">Manage Front Image</h2>
+<fieldset>
+    <legend>Manage Front Image</legend>
+    @using (Html.BeginForm("ManageFrontImage", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+    @Html.AntiForgeryToken()
+    <table class="clsTableLeftMargin" cellspacing="10" cellpadding="10">
+
+        <tr>
+            <td>Select Image<span class="clsSpanRed">*</span></td>
+            <td>:</td>
+            <td><input type="file" id="postedFile" name="postedFile" /></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>
+                <input type="submit" id="btnSaveImage" class="createbutton" value="Save" />
+                <a href="/Admin/Dashboard" class="cancelbutton">Cancel</a>
+            </td>
+        </tr>
+    </table>
+    }
+</fieldset>
+<br />
+<div>
+    <a href="/Admin/GetAllFrontImage" style="margin-left:192px;" class="cancelbutton">Get All Image</a>
+    <br />
+    <div>
+        @if (Model.FrontEndImageML != null && Model.FrontEndImageML.Count > 0)
+        {
+
+            WebGrid grid = new WebGrid(rowsPerPage: Model.PageSize);
+            grid.Bind(Model.FrontEndImageML,
+            autoSortAndPage: false,
+            rowCount: Model.TotalRows);
+
+            @grid.GetHtml(
+ fillEmptyRows: false,
+ tableStyle: "webgrid",
+ alternatingRowStyle: "webgrid-alternating-row",
+ headerStyle: "webgrid-header",
+ footerStyle: "webgrid-footer",
+ mode: WebGridPagerModes.All,
+ firstText: "<< First",
+ previousText: "< Prev",
+ nextText: "Next >",
+ lastText: "Last >>",
+ columns: new[] {
+ grid.Column("Id",header: "Id", canSort: false),
+ grid.Column("ImageName",header: "Image Name",canSort: false),
+ grid.Column("DisplayCreatedDate",header: "Upload Date(DD-MM-YYYY)",canSort: false),
+ grid.Column(header: "Is Active",canSort: false,format:@<text>@(item.IsActive ? "Yes" : "No")</text>),
+ grid.Column(header: "Show Image", format:@<text>  @Html.ActionLink("Show Image", "ShowFrontImage",new { id = item.Id } , new {target="_blank"})</text>),
+ grid.Column(header: "Delete", format:@<text>  @Html.ActionLink("Delete", "DeleteFrontImage",new { id = item.Id },new {target="_blank",@class="clsDeleteImage" })</text>)
+
+    })
+        }
+        else
+        {
+            if (Model.FrontEndImageML != null && Model.FrontEndImageML.Count == 0)
+            {
+                <h2><span style="margin-left:192px;">No record found</span></h2>
+            }
+
+        }
+    </div>
+
+
+</div>

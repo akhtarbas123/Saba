@@ -1,0 +1,95 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Welcome</title>
+    <script src="~/Content/js/jquery-1.8.3.js"></script>
+    <script src="~/Content/js/jquery-ui.min.js"></script>
+    <link href="~/Content/css/UserMenuAfterLogin.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/superfish.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="~/Scripts/superfish.js"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('#menu').superfish();
+        });
+    </script>
+</head>
+<body>
+    <header>
+        @{
+            string userName = Convert.ToString(Session["UserName"]);
+        }
+        <div>
+            <table cellspacing="3" cellpadding="3" style="float:right;">
+                <tr>
+                    <td><span style="float:right;font-size:medium;"><b> Welcome : @userName</b></span></td>
+                </tr>
+            </table>
+        </div>
+        <div class="menu-box">
+            <div class="container">
+                <div class="navigation">
+                    <ul class="sf-menu" style="background-color:chocolate;" id="menu">
+                        <li><a href="/User/Dashboard">Home</a></li>
+                        <li>
+                            <a href="javascript:void(0)">Message</a>
+                            <ul>
+                                <li><a href="/User/SendMessage">Send Message</a></li>
+                                <li><a href="/User/SentMessage">Sent Message</a></li>
+                                <li><a href="/User/Inbox">Inbox</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">Create User</a>
+                            <ul>
+                                <li><a href="/User/CreateUser">Create User</a></li>
+                                <li><a href="/User/EnterVoterDetails">Enter Voter Details</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">Search</a>
+                            <ul>
+                                <li><a href="/User/SearchInActiveUserByBlockArea">Search Inactive User</a></li>
+                                <li><a href="/User/SearchActiveUserByBlockArea">Search active User</a></li>
+                                <li><a href="/User/SearchByUserName">Search By User Name</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">User Account</a>
+                            <ul>
+                                <li><a href="/User/UserChangePassword">Change Password</a></li>
+                                <li><a href="/User/UpdateUserDetails">Update User Details</a></li>
+                                <li><a href="/User/UserBankDetails">Update Bank Details</a></li>
+                                <li><a href="/User/LogOut">LogOut</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </header>
+    <section>
+        @RenderBody()
+    </section>
+    <footer>
+
+        <div class="footer-bot-bg">
+            <div class="container">
+                <div class="footer-cont">
+                    ©copyright 2019,  All right reserved.
+                    
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

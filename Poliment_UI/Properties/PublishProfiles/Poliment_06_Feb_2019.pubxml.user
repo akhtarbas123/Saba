@@ -1,0 +1,538 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>E:\Publish\Poliment_06_Feb_2019</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/Antlr3.Runtime.dll">
+      <publishTime>09/18/2018 09:38:30</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>09/13/2018 15:53:54</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>09/13/2018 15:53:54</publishTime>
+    </File>
+    <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
+      <publishTime>09/13/2018 15:04:23</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>09/13/2018 15:04:22</publishTime>
+    </File>
+    <File Include="bin/MvcBundleConfig.dll">
+      <publishTime>09/18/2018 09:38:50</publishTime>
+    </File>
+    <File Include="bin/NAudio.dll">
+      <publishTime>11/27/2018 15:33:54</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>09/18/2018 09:38:36</publishTime>
+    </File>
+    <File Include="bin/Poliment_DL.dll">
+      <publishTime>02/06/2019 15:28:18</publishTime>
+    </File>
+    <File Include="bin/Poliment_UI.dll">
+      <publishTime>02/06/2019 16:34:21</publishTime>
+    </File>
+    <File Include="bin/RestSharp.dll">
+      <publishTime>10/17/2018 12:34:44</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.exe">
+      <publishTime>09/13/2018 15:04:22</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.Build.Tasks.CodeAnalysis.dll">
+      <publishTime>09/13/2018 15:04:22</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.dll">
+      <publishTime>09/13/2018 15:04:22</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.dll">
+      <publishTime>09/13/2018 15:04:22</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.VisualBasic.dll">
+      <publishTime>09/13/2018 15:04:23</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CSharp.Core.targets">
+      <publishTime>09/13/2018 15:04:23</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.VisualBasic.Core.targets">
+      <publishTime>09/13/2018 15:04:23</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Collections.Immutable.dll">
+      <publishTime>09/13/2018 15:04:23</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Reflection.Metadata.dll">
+      <publishTime>09/13/2018 15:04:23</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.exe">
+      <publishTime>09/13/2018 15:04:23</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe">
+      <publishTime>09/13/2018 15:04:23</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe.config">
+      <publishTime>09/13/2018 15:04:23</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>10/18/2018 18:24:17</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>09/13/2018 15:04:22</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>09/13/2018 15:04:22</publishTime>
+    </File>
+    <File Include="bin/System.Web.Optimization.dll">
+      <publishTime>09/18/2018 09:38:46</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>09/13/2018 15:04:21</publishTime>
+    </File>
+    <File Include="bin/System.Web.Webpages.Deployment.dll">
+      <publishTime>09/13/2018 15:04:22</publishTime>
+    </File>
+    <File Include="bin/System.Web.Webpages.dll">
+      <publishTime>09/13/2018 15:04:22</publishTime>
+    </File>
+    <File Include="bin/System.Web.Webpages.Razor.dll">
+      <publishTime>09/13/2018 15:04:22</publishTime>
+    </File>
+    <File Include="bin/WebActivator.dll">
+      <publishTime>09/18/2018 09:38:39</publishTime>
+    </File>
+    <File Include="bin/WebGrease.dll">
+      <publishTime>09/18/2018 09:38:43</publishTime>
+    </File>
+    <File Include="Bundles.config">
+      <publishTime>09/18/2018 09:38:51</publishTime>
+    </File>
+    <File Include="Content/css/AdminMenu.css">
+      <publishTime>01/31/2019 00:54:46</publishTime>
+    </File>
+    <File Include="Content/css/Common.css">
+      <publishTime>11/27/2018 09:27:55</publishTime>
+    </File>
+    <File Include="Content/css/CommonWithGrid.css">
+      <publishTime>10/30/2018 16:50:33</publishTime>
+    </File>
+    <File Include="Content/css/CreateUser.css">
+      <publishTime>12/16/2018 20:42:44</publishTime>
+    </File>
+    <File Include="Content/css/jquery-ui.css">
+      <publishTime>09/22/2018 20:36:32</publishTime>
+    </File>
+    <File Include="Content/css/LayoutMenu.css">
+      <publishTime>10/12/2018 15:32:42</publishTime>
+    </File>
+    <File Include="Content/css/SearchByBlockArea.css">
+      <publishTime>10/06/2018 08:39:24</publishTime>
+    </File>
+    <File Include="Content/css/SendMessage.css">
+      <publishTime>10/11/2018 15:36:33</publishTime>
+    </File>
+    <File Include="Content/css/style.css">
+      <publishTime>10/08/2018 12:30:48</publishTime>
+    </File>
+    <File Include="Content/css/superfish.css">
+      <publishTime>12/13/2018 13:45:53</publishTime>
+    </File>
+    <File Include="Content/css/UserMenuAfterLogin.css">
+      <publishTime>10/12/2018 12:05:55</publishTime>
+    </File>
+    <File Include="Content/fwslider.css">
+      <publishTime>10/08/2018 21:14:51</publishTime>
+    </File>
+    <File Include="Content/js/AdminMessageDetails.js">
+      <publishTime>10/14/2018 20:46:50</publishTime>
+    </File>
+    <File Include="Content/js/CreateUser.js">
+      <publishTime>02/04/2019 17:14:56</publishTime>
+    </File>
+    <File Include="Content/js/Dashboard.js">
+      <publishTime>02/04/2019 17:47:13</publishTime>
+    </File>
+    <File Include="Content/js/jquery-1.8.3.js">
+      <publishTime>10/08/2018 13:11:48</publishTime>
+    </File>
+    <File Include="Content/js/jquery-ui.min.js">
+      <publishTime>10/08/2018 13:11:48</publishTime>
+    </File>
+    <File Include="Content/js/ManageHomeScreen.js">
+      <publishTime>02/05/2019 02:51:27</publishTime>
+    </File>
+    <File Include="Content/js/SaveContact.js">
+      <publishTime>11/23/2018 19:15:54</publishTime>
+    </File>
+    <File Include="Content/js/SendMessage.js">
+      <publishTime>02/04/2019 17:15:47</publishTime>
+    </File>
+    <File Include="Content/js/SendQuery.js">
+      <publishTime>01/31/2019 01:38:41</publishTime>
+    </File>
+    <File Include="Content/js/UpdateAdminDetails.js">
+      <publishTime>12/14/2018 17:53:15</publishTime>
+    </File>
+    <File Include="Content/js/UpdateUserDetails.js">
+      <publishTime>01/16/2019 20:37:38</publishTime>
+    </File>
+    <File Include="FrontImage/about-banner.jpg">
+      <publishTime>10/08/2018 12:04:17</publishTime>
+    </File>
+    <File Include="FrontImage/banner-img.jpg">
+      <publishTime>10/08/2018 12:04:17</publishTime>
+    </File>
+    <File Include="FrontImage/banner-img1.jpg">
+      <publishTime>10/08/2018 12:04:17</publishTime>
+    </File>
+    <File Include="FrontImage/banner-img2.jpg">
+      <publishTime>10/08/2018 12:04:17</publishTime>
+    </File>
+    <File Include="FrontImage/banner-img3.jpg">
+      <publishTime>10/08/2018 12:04:17</publishTime>
+    </File>
+    <File Include="FrontImage/banner-img4.jpg">
+      <publishTime>10/27/2018 08:42:09</publishTime>
+    </File>
+    <File Include="FrontImage/register-bg.jpg">
+      <publishTime>10/08/2018 12:04:20</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>09/13/2018 15:04:21</publishTime>
+    </File>
+    <File Include="images/AboutStatic.jpg">
+      <publishTime>11/02/2018 18:56:26</publishTime>
+    </File>
+    <File Include="images/Facebook.png">
+      <publishTime>01/07/2019 18:46:41</publishTime>
+    </File>
+    <File Include="images/Instagram.png">
+      <publishTime>01/07/2019 18:46:41</publishTime>
+    </File>
+    <File Include="images/left_arrow.png">
+      <publishTime>10/08/2018 12:04:17</publishTime>
+    </File>
+    <File Include="images/menu-bg.png">
+      <publishTime>10/08/2018 12:04:17</publishTime>
+    </File>
+    <File Include="images/news-scroll.png">
+      <publishTime>10/08/2018 12:04:17</publishTime>
+    </File>
+    <File Include="images/PartyLogo.jpg">
+      <publishTime>10/08/2018 12:04:17</publishTime>
+    </File>
+    <File Include="images/right_arrow.png">
+      <publishTime>10/08/2018 12:04:21</publishTime>
+    </File>
+    <File Include="images/Twitter.png">
+      <publishTime>01/07/2019 18:46:41</publishTime>
+    </File>
+    <File Include="images/ui-icons_444444_256x240.png">
+      <publishTime>10/08/2018 10:46:14</publishTime>
+    </File>
+    <File Include="images/ui-icons_555555_256x240.png">
+      <publishTime>10/08/2018 10:46:14</publishTime>
+    </File>
+    <File Include="images/ui-icons_777620_256x240.png">
+      <publishTime>10/08/2018 10:46:14</publishTime>
+    </File>
+    <File Include="images/ui-icons_777777_256x240.png">
+      <publishTime>10/08/2018 10:46:14</publishTime>
+    </File>
+    <File Include="images/ui-icons_cc0000_256x240.png">
+      <publishTime>10/08/2018 10:46:14</publishTime>
+    </File>
+    <File Include="images/ui-icons_ffffff_256x240.png">
+      <publishTime>10/08/2018 10:46:14</publishTime>
+    </File>
+    <File Include="images/WaitingLoader.gif">
+      <publishTime>02/05/2019 21:31:14</publishTime>
+    </File>
+    <File Include="images/Youtube.png">
+      <publishTime>01/07/2019 18:53:45</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>11/27/2018 15:33:56</publishTime>
+    </File>
+    <File Include="Scripts/fwslider.js">
+      <publishTime>10/08/2018 11:47:03</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.3.1.js">
+      <publishTime>09/18/2018 09:19:15</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.3.1.min.js">
+      <publishTime>09/18/2018 09:19:15</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.3.1.min.map">
+      <publishTime>09/18/2018 09:19:15</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.3.1.slim.js">
+      <publishTime>09/18/2018 09:19:15</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.3.1.slim.min.js">
+      <publishTime>09/18/2018 09:19:15</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.3.1.slim.min.map">
+      <publishTime>09/18/2018 09:19:15</publishTime>
+    </File>
+    <File Include="Scripts/jquery-ui-1.12.1.js">
+      <publishTime>09/22/2018 20:35:03</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.js">
+      <publishTime>09/21/2018 19:46:56</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.min.js">
+      <publishTime>09/21/2018 19:46:55</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.unobtrusive.js">
+      <publishTime>09/21/2018 21:47:47</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.unobtrusive.min.js">
+      <publishTime>09/21/2018 21:47:47</publishTime>
+    </File>
+    <File Include="Scripts/popper-utils.js">
+      <publishTime>10/03/2018 08:19:10</publishTime>
+    </File>
+    <File Include="Scripts/popper-utils.js.map">
+      <publishTime>10/03/2018 08:19:10</publishTime>
+    </File>
+    <File Include="Scripts/popper-utils.min.js">
+      <publishTime>10/03/2018 08:19:10</publishTime>
+    </File>
+    <File Include="Scripts/popper-utils.min.js.map">
+      <publishTime>10/03/2018 08:19:10</publishTime>
+    </File>
+    <File Include="Scripts/popper.js">
+      <publishTime>10/03/2018 08:19:10</publishTime>
+    </File>
+    <File Include="Scripts/popper.js.map">
+      <publishTime>10/03/2018 08:19:10</publishTime>
+    </File>
+    <File Include="Scripts/popper.min.js">
+      <publishTime>10/03/2018 08:19:10</publishTime>
+    </File>
+    <File Include="Scripts/popper.min.js.map">
+      <publishTime>10/03/2018 08:19:10</publishTime>
+    </File>
+    <File Include="Scripts/README.md">
+      <publishTime>10/03/2018 08:19:10</publishTime>
+    </File>
+    <File Include="Scripts/superfish.js">
+      <publishTime>10/08/2018 11:47:03</publishTime>
+    </File>
+    <File Include="Uploads/Surah131837435422923759.pdf">
+      <publishTime>10/11/2018 20:29:02</publishTime>
+    </File>
+    <File Include="Views/Admin/AdminChangePassword.cshtml">
+      <publishTime>01/28/2019 14:52:09</publishTime>
+    </File>
+    <File Include="Views/Admin/AdminSentMessageDetails.cshtml">
+      <publishTime>01/28/2019 15:30:00</publishTime>
+    </File>
+    <File Include="Views/Admin/AllUserMessage.cshtml">
+      <publishTime>01/27/2019 17:25:48</publishTime>
+    </File>
+    <File Include="Views/Admin/CreateUser.cshtml">
+      <publishTime>02/04/2019 17:43:42</publishTime>
+    </File>
+    <File Include="Views/Admin/Dashboard.cshtml">
+      <publishTime>01/26/2019 23:44:30</publishTime>
+    </File>
+    <File Include="Views/Admin/GetAllMessageSentDetails.cshtml">
+      <publishTime>01/27/2019 19:46:59</publishTime>
+    </File>
+    <File Include="Views/Admin/GetAllVoiceCallSentDetails.cshtml">
+      <publishTime>01/27/2019 19:41:44</publishTime>
+    </File>
+    <File Include="Views/Admin/Index.cshtml">
+      <publishTime>11/11/2018 18:20:10</publishTime>
+    </File>
+    <File Include="Views/Admin/ManageContactMessage.cshtml">
+      <publishTime>01/31/2019 01:17:29</publishTime>
+    </File>
+    <File Include="Views/Admin/ManageDevelopmentWork.cshtml">
+      <publishTime>01/31/2019 01:13:39</publishTime>
+    </File>
+    <File Include="Views/Admin/ManageFrontImage.cshtml">
+      <publishTime>02/04/2019 17:50:57</publishTime>
+    </File>
+    <File Include="Views/Admin/ManageFrontVideo.cshtml">
+      <publishTime>02/05/2019 21:41:16</publishTime>
+    </File>
+    <File Include="Views/Admin/ManageGuestQuery.cshtml">
+      <publishTime>01/31/2019 01:07:50</publishTime>
+    </File>
+    <File Include="Views/Admin/ManageHomeScreen.cshtml">
+      <publishTime>02/05/2019 00:45:44</publishTime>
+    </File>
+    <File Include="Views/Admin/ManageNews.cshtml">
+      <publishTime>01/31/2019 01:01:15</publishTime>
+    </File>
+    <File Include="Views/Admin/MessageDetails.cshtml">
+      <publishTime>01/28/2019 15:28:24</publishTime>
+    </File>
+    <File Include="Views/Admin/ResetPasswordInterface.cshtml">
+      <publishTime>11/11/2018 18:23:30</publishTime>
+    </File>
+    <File Include="Views/Admin/SearchByBlockArea.cshtml">
+      <publishTime>01/26/2019 19:52:35</publishTime>
+    </File>
+    <File Include="Views/Admin/SearchByUserName.cshtml">
+      <publishTime>01/26/2019 23:49:55</publishTime>
+    </File>
+    <File Include="Views/Admin/SearchInActiveUserByBlockArea.cshtml">
+      <publishTime>01/26/2019 23:53:11</publishTime>
+    </File>
+    <File Include="Views/Admin/SearchVotingSurveyByBlockArea.cshtml">
+      <publishTime>02/04/2019 17:33:25</publishTime>
+    </File>
+    <File Include="Views/Admin/SendMessageByAdmin.cshtml">
+      <publishTime>02/04/2019 17:37:38</publishTime>
+    </File>
+    <File Include="Views/Admin/SendSmsByAdmin.cshtml">
+      <publishTime>02/05/2019 23:40:02</publishTime>
+    </File>
+    <File Include="Views/Admin/SendVoiceCallByAdmin.cshtml">
+      <publishTime>02/05/2019 23:44:14</publishTime>
+    </File>
+    <File Include="Views/Admin/SentMessageByAdmin.cshtml">
+      <publishTime>01/27/2019 17:34:07</publishTime>
+    </File>
+    <File Include="Views/Admin/ShowAdminNews.cshtml">
+      <publishTime>01/28/2019 15:02:04</publishTime>
+    </File>
+    <File Include="Views/Admin/ShowContactMessage.cshtml">
+      <publishTime>01/28/2019 15:08:06</publishTime>
+    </File>
+    <File Include="Views/Admin/ShowDevelopmentWork.cshtml">
+      <publishTime>01/28/2019 15:07:19</publishTime>
+    </File>
+    <File Include="Views/Admin/ShowFrontImage.cshtml">
+      <publishTime>11/25/2018 17:35:12</publishTime>
+    </File>
+    <File Include="Views/Admin/ShowFrontVideo.cshtml">
+      <publishTime>01/28/2019 14:59:16</publishTime>
+    </File>
+    <File Include="Views/Admin/ShowGuestQuery.cshtml">
+      <publishTime>01/28/2019 15:05:39</publishTime>
+    </File>
+    <File Include="Views/Admin/ShowUserImage.cshtml">
+      <publishTime>01/28/2019 15:17:00</publishTime>
+    </File>
+    <File Include="Views/Admin/Test.cshtml">
+      <publishTime>11/24/2018 17:26:54</publishTime>
+    </File>
+    <File Include="Views/Admin/UpdateAdminDetails.cshtml">
+      <publishTime>01/28/2019 14:54:34</publishTime>
+    </File>
+    <File Include="Views/Admin/UploadFiles.cshtml">
+      <publishTime>09/23/2018 16:25:28</publishTime>
+    </File>
+    <File Include="Views/Admin/UserBankDetails.cshtml">
+      <publishTime>01/28/2019 15:19:31</publishTime>
+    </File>
+    <File Include="Views/Home/Contact.cshtml">
+      <publishTime>01/31/2019 01:45:22</publishTime>
+    </File>
+    <File Include="Views/Home/DevelopmentWork.cshtml">
+      <publishTime>01/31/2019 01:24:37</publishTime>
+    </File>
+    <File Include="Views/Home/GetFrontVideo.cshtml">
+      <publishTime>01/31/2019 01:23:12</publishTime>
+    </File>
+    <File Include="Views/Home/GuestQueryResponse.cshtml">
+      <publishTime>01/28/2019 20:44:43</publishTime>
+    </File>
+    <File Include="Views/Home/Index.cshtml">
+      <publishTime>02/06/2019 02:42:48</publishTime>
+    </File>
+    <File Include="Views/Home/SendQuery.cshtml">
+      <publishTime>01/28/2019 20:40:55</publishTime>
+    </File>
+    <File Include="Views/Home/ShowAdminNews.cshtml">
+      <publishTime>11/10/2018 16:50:48</publishTime>
+    </File>
+    <File Include="Views/Home/VotingSurvey.cshtml">
+      <publishTime>02/05/2019 00:14:35</publishTime>
+    </File>
+    <File Include="Views/Shared/_AdminError.cshtml">
+      <publishTime>10/14/2018 17:48:41</publishTime>
+    </File>
+    <File Include="Views/Shared/_BundleLayout.cshtml">
+      <publishTime>09/18/2018 09:38:51</publishTime>
+    </File>
+    <File Include="Views/Shared/_HomeError.cshtml">
+      <publishTime>11/10/2018 16:20:21</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout.cshtml">
+      <publishTime>02/06/2019 02:39:55</publishTime>
+    </File>
+    <File Include="Views/Shared/_LayoutBeforeLogin.cshtml">
+      <publishTime>02/06/2019 02:47:59</publishTime>
+    </File>
+    <File Include="Views/Shared/_UserError.cshtml">
+      <publishTime>12/06/2018 19:20:44</publishTime>
+    </File>
+    <File Include="Views/Shared/_UserMenuAfterLogin.cshtml">
+      <publishTime>02/06/2019 02:39:01</publishTime>
+    </File>
+    <File Include="Views/User/CreateUser.cshtml">
+      <publishTime>02/04/2019 17:04:26</publishTime>
+    </File>
+    <File Include="Views/User/Dashboard.cshtml">
+      <publishTime>01/18/2019 08:07:07</publishTime>
+    </File>
+    <File Include="Views/User/Inbox.cshtml">
+      <publishTime>01/28/2019 16:29:55</publishTime>
+    </File>
+    <File Include="Views/User/InboxMessageDetails.cshtml">
+      <publishTime>01/28/2019 16:32:03</publishTime>
+    </File>
+    <File Include="Views/User/Index.cshtml">
+      <publishTime>11/11/2018 18:23:41</publishTime>
+    </File>
+    <File Include="Views/User/MessageDetails.cshtml">
+      <publishTime>01/28/2019 16:26:40</publishTime>
+    </File>
+    <File Include="Views/User/ResetPasswordInterface.cshtml">
+      <publishTime>11/12/2018 08:46:23</publishTime>
+    </File>
+    <File Include="Views/User/SearchActiveUserByBlockArea.cshtml">
+      <publishTime>01/28/2019 16:48:52</publishTime>
+    </File>
+    <File Include="Views/User/SearchByUserName.cshtml">
+      <publishTime>01/28/2019 16:57:23</publishTime>
+    </File>
+    <File Include="Views/User/SearchInActiveUserByBlockArea.cshtml">
+      <publishTime>01/28/2019 16:39:18</publishTime>
+    </File>
+    <File Include="Views/User/SendMessage.cshtml">
+      <publishTime>02/04/2019 16:30:43</publishTime>
+    </File>
+    <File Include="Views/User/SentMessage.cshtml">
+      <publishTime>01/28/2019 16:26:49</publishTime>
+    </File>
+    <File Include="Views/User/ShowUserImage.cshtml">
+      <publishTime>01/28/2019 16:42:38</publishTime>
+    </File>
+    <File Include="Views/User/UpdateUserDetails.cshtml">
+      <publishTime>01/28/2019 15:55:48</publishTime>
+    </File>
+    <File Include="Views/User/UserBankDetails.cshtml">
+      <publishTime>02/04/2019 17:20:16</publishTime>
+    </File>
+    <File Include="Views/User/UserChangePassword.cshtml">
+      <publishTime>01/28/2019 16:59:58</publishTime>
+    </File>
+    <File Include="Views/web.config">
+      <publishTime>09/18/2018 10:36:02</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>02/06/2019 16:34:22</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,27 @@
+﻿@model Poliment_DL.Model.ContactMessageML
+@{
+    ViewBag.Title = "ShowContactMessage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/css/Common.css" rel="stylesheet" />
+<style type="text/css">
+    .clsSetHeaderDesc {
+        margin-top: 35px;
+        margin-left: 195px;
+    }
+</style>
+<h2 class="clsSetHeaderDesc">Show Contact Message</h2>
+<div>
+    <fieldset>
+        <legend><b>Show Contact Message</b></legend>
+
+        <table class="clsTableLeftMargin" cellspacing="10" cellpadding="10">
+            <tr>
+                <td><b> Contact Message</b></td>
+                <td>:</td>
+                <td>@Model.Message</td>
+                        </tr>
+                    </table>
+
+                </fieldset>
+ </div>

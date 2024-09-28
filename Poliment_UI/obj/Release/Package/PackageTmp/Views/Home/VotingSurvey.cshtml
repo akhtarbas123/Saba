@@ -1,0 +1,319 @@
+﻿@model Poliment_UI.Models.HomeVM
+@{
+    ViewBag.Title = "VotingSurvey";
+    Layout = "~/Views/Shared/_LayoutBeforeLogin.cshtml";
+}
+
+<link href="~/Content/css/Common.css" rel="stylesheet" />
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#mobileNumber").keydown(function (e) {
+            if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110]) !== -1 ||
+                   (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) ||
+                   (e.keyCode >= 35 && e.keyCode <= 40)) {
+
+                return;
+            }
+            if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+                e.preventDefault();
+            }
+        });
+        $('#btnSaveVotingSurvey').click(function () {
+
+            var blockId = $("#BlockName option:selected").val();
+            var blockName = $("#BlockName option:selected").text();
+            var areaId = $("#AreaName option:selected").val();
+            var areaName = $("#AreaName option:selected").text();
+            var fullName = $("#fullName").val();
+            var voterIdNumber = $("#voterIdNumber").val();
+            if (voterIdNumber == undefined || voterIdNumber == null || voterIdNumber == "") {
+                alert("Please enter voter id number");
+                $("#voterIdNumber").focus();
+                return false;
+            }
+            if (voterIdNumber.length < 10) {
+                alert("Please enter valid voter id number");
+                $("#voterIdNumber").focus();
+                return false;
+            }
+            var voterIdAvailable = CheckVoterId(voterIdNumber);
+            if (voterIdAvailable == 'Exist' || voterIdAvailable == 'Error') {
+                alert("This voter id survey has been given.Please enter another voter id to complete survey");
+                $("#voterIdNumber").focus();
+                return false;
+            }
+
+            if (fullName == undefined || fullName == null || fullName == "") {
+                alert("Please enter name");
+                $("#fullName").focus();
+                return false;
+            }
+            var mobile = $("#mobileNumber").val();
+            if (mobile == undefined || mobile == null || mobile == "") {
+                alert("Please enter mobile number");
+                $("#mobileNumber").focus();
+                return false;
+            }
+            if (mobile != undefined && mobile != null && mobile != "") {
+                if (!MobileValidate(mobile)) {
+                    alert("Please enter valid mobile number");
+                    $("#mobileNumber").focus();
+                    return false;
+                }
+            }
+            var mobileCount = CheckVotingSurveyMobileCount(mobile);
+            if (parseInt(mobileCount) <= 3) {
+
+            }
+            else {
+                alert("This mobile number has been used for voting survey.Please enter another mobile number.");
+                $("#mobileNumber").focus();
+                return false;
+            }
+            var address = $("#Address").val();
+
+            var sdata = {};
+            sdata.BlockId = blockId;
+            sdata.BlockName = blockName;
+            sdata.AreaId = areaId;
+            sdata.AreaName = areaName;
+            sdata.Name = fullName;
+            sdata.Mobile = mobile;
+            sdata.VoterIdNumber = voterIdNumber;
+            sdata.Address = address;
+            $.ajax({
+                url: '/Home/SaveVotingSurvey',
+                type: "POST",
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                data: JSON.stringify(sdata),
+                success: function (myresult) {
+                    if (myresult == "error") {
+                        alert("An error occured");
+                    }
+                    else {
+                        $("#fullName").val('');
+                        $("#mobileNumber").val('');
+                        $("#voterIdNumber").val('');
+                        $("#Address").val('');
+                        alert("Your voting survey details subitted successfully");
+                    }
+
+                },
+                error: function () {
+                    alert("An error occured");
+                }
+            });
+
+        });
+        function MobileValidate(mobile) {
+            var pattern = /^\d{10}$/;
+            if (mobile != null || mobile != "") {
+                if (!pattern.test(mobile)) {
+                    return false;
+                }
+                else {
+                    return true;
+                }
+            }
+            else {
+                return false;
+            }
+
+        }
+        $('#BlockName').change(function () {
+            var blockId = $('#BlockName option:selected').val();
+            var blockName = $('#BlockName option:selected').text();
+            if (blockId != undefined && blockId != null && blockId != "") {
+                var sdata = {};
+                sdata.blockName = blockName;
+                $.ajax({
+                    url: '/Home/GetArea',
+                    type: "POST",
+                    dataType: 'json',
+                    contentType: 'application/json; charset=utf-8',
+                    data: JSON.stringify(sdata),
+                    success: function (result) {
+                        if (result != undefined) {
+                            var totalLength = result.length;
+                            $('#AreaName').html('');
+                            //    $('#ddlArea').append("<option value=0>Select</option>");
+                            for (var i = 0; i < totalLength; i++) {
+                                $('#AreaName').append("<option value='" + result[i].Id + "'>" + result[i].AreaName + "</option>");
+                            }
+                        }
+
+                    },
+                    error: function () {
+                        alert("An error occured");
+                    }
+                });
+            }
+            else {
+                return false;
+            }
+        });
+        function CheckVotingSurveyMobileCount(mobile) {
+            var mobileCount = '';
+            var sdata = {};
+            sdata.mobileValue = mobile;
+            $.ajax({
+                url: '/Home/CheckVotingSurveyMobileCount',
+                type: "POST",
+                dataType: 'json',
+                async: false,
+                cache: false,
+                contentType: 'application/json; charset=utf-8',
+                data: JSON.stringify(sdata),
+                success: function (mobileCountResult) {
+                    if (mobileCountResult != undefined) {
+                        mobileCount = mobileCountResult;
+                    }
+                },
+                error: function () {
+                    alert("An error occured");
+                }
+            });
+            return mobileCount;
+        }
+        $('#mobileNumber').change(function () {
+                var mobile = $("#mobileNumber").val();
+                if (mobile == undefined || mobile == null || mobile == "") {
+                    alert("Please enter mobile number");
+                    $("#mobileNumber").focus();
+                    return false;
+                }
+                if (mobile != undefined && mobile != null && mobile != "") {
+                    if (!MobileValidate(mobile)) {
+                        alert("Please enter valid mobile number");
+                        $("#mobileNumber").focus();
+                        return false;
+                    }
+                }
+                var mobileCount = CheckVotingSurveyMobileCount(mobile);
+                if (parseInt(mobileCount) <= 3) {
+                   
+                }
+                else
+                {
+                    alert("This mobile number has been used for voting survey.Please enter another mobile number");
+                    $("#mobileNumber").focus();
+                }
+            });
+        $('#voterIdNumber').change(function () {
+            var voterIdNumber = $("#voterIdNumber").val();
+            if (voterIdNumber == undefined || voterIdNumber == null || voterIdNumber == "") {
+                alert("Please enter voter id number");
+                $("#voterIdNumber").focus();
+                return false;
+            }
+            if (voterIdNumber.length < 10) {
+                alert("Please enter valid voter id number");
+                $("#voterIdNumber").focus();
+                return false;
+            }
+            var voterIdAvailable = CheckVoterId(voterIdNumber);
+            if (voterIdAvailable == 'Exist' || voterIdAvailable == 'Error') {
+                alert("This voter id survey has been given.Please enter another voter id to complete survey");
+            }
+        });
+        function CheckVoterId(voterId) {
+            var voterIdExist = '';
+            var sdata = {};
+            sdata.voterIdValue = voterId;
+            $.ajax({
+                url: '/Home/CheckVoterIdExist',
+                type: "POST",
+                dataType: 'json',
+                async: false,
+                cache: false,
+                contentType: 'application/json; charset=utf-8',
+                data: JSON.stringify(sdata),
+                success: function (result) {
+                    if (result != undefined) {
+                        voterIdExist = result;
+                    }
+                },
+                error: function () {
+                    alert("An error occured");
+                }
+            });
+            return voterIdExist;
+        }
+    });
+</script>
+<style type="text/css">
+    .errorMessage {
+        color: red;
+        font-size: large;
+        margin-left: 500px;
+    }
+
+    .successMessage {
+        color: green;
+        font-size: large;
+        margin-left: 5px;
+    }
+</style>
+<div class="clsBodyBackGround">
+
+    <fieldset>
+
+        @if (!string.IsNullOrEmpty(Model.ManageHomeScreenML.VotingSurveyHeading))
+        {
+            <h3><span>@Model.ManageHomeScreenML.VotingSurveyHeading</span></h3>
+        }
+        else
+        {
+            <h3><span style=" margin-left:485px;">Voting Survey</span></h3>
+        }
+
+        <table class="clsTableLeftMargin" border="1" cellspacing="10" cellpadding="10">
+
+            <tr>
+                <td>Select Block<span class="clsSpanRed">*</span></td>
+                <td>:</td>
+                <td>
+                    @Html.DropDownList("BlockName", new SelectList(Model.BlockML, "Id", "BlockName"), new { @class = "reg-frm-inp" })
+                </td>
+            </tr>
+            <tr>
+                <td>Select Area<span class="clsSpanRed">*</span></td>
+                <td>:</td>
+                <td>
+                    @Html.DropDownList("AreaName", new SelectList(Model.AreaML, "Id", "AreaName"), new { @class = "clsddlArea reg-frm-inp" })
+                </td>
+            </tr>
+            <tr>
+                <td>Voter Id Number<span class="clsSpanRed">*</span></td>
+                <td>:</td>
+                <td><input type="text" id="voterIdNumber" maxlength="30" name="voterIdNumber" class="reg-frm-inp IncreaseTextWidth" /></td>
+            </tr>
+            <tr>
+                <td>Name<span class="clsSpanRed">*</span></td>
+                <td>:</td>
+                <td><input type="text" id="fullName" maxlength="60" name="fullName" class="reg-frm-inp IncreaseTextWidth" /></td>
+            </tr>
+            <tr>
+                <td>Mobile<span class="clsSpanRed">*</span></td>
+                <td>:</td>
+                <td><input type="text" id="mobileNumber" maxlength="10" name="mobileNumber" class="reg-frm-inp IncreaseTextWidth" /></td>
+            </tr>
+            <tr>
+                <td>Address</td>
+                <td>:</td>
+                <td><input type="text" id="Address" maxlength="200" name="Address" class="reg-frm-inp IncreaseTextWidth" /></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td>
+                    <input type="button" id="btnSaveVotingSurvey" class="createbutton" value="Save" />
+                    <a href="/Home/Index" class="cancelbutton">Cancel</a>
+                </td>
+            </tr>
+        </table>
+
+    </fieldset>
+</div>
+

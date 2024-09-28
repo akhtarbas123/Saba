@@ -1,0 +1,119 @@
+﻿@model Poliment_UI.Models.AdminMessageVM
+@{
+    ViewBag.Title = "SendVoiceCallByAdmin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var validateBlock = "Yes";
+
+        $('input[type="checkbox"]').click(function () {
+            if ($(this).prop("checked") == true) {
+                $('#RowBlock').hide();
+                validateBlock = "No";
+                $("#BlockName").val(0);
+            }
+            else if ($(this).prop("checked") == false) {
+                $('#RowBlock').show();
+                validateBlock = "Yes";
+            }
+        });
+
+        $('#btnSendMessage').click(function () {
+            var postedFile = $("#postedFile").val();
+            if (postedFile == undefined || postedFile == null || postedFile == "") {
+                alert("Please select audio file");
+                return false;
+            }
+            if (postedFile != undefined && postedFile != null && postedFile != "") {
+                var postedFileSplit = postedFile.split('.');
+                var musicFileType = postedFileSplit[1];
+                if (musicFileType != 'mp3') {
+                    alert("Please select only mp3 audio file");
+                    return false;
+                }
+            }
+            if (validateBlock == 'Yes') {
+                var blockId = $("#BlockName option:selected").val();
+                if (blockId == 'undefined' || blockId == null || blockId == "") {
+                    alert("Please select block");
+                    return false;
+                }
+            }
+        });
+
+        $("#callForm").submit(function (e) {
+            $("#myLoadingElement").show();
+        });
+    });
+
+</script>
+<style type="text/css">
+    .clsSetHeaderDesc {
+        margin-top: 35px;
+        margin-left: 195px;
+    }
+</style>
+<link href="~/Content/css/Common.css" rel="stylesheet" />
+<h2 class="clsSetHeaderDesc">Send Voice Call</h2>
+<div>
+    @{
+        if (TempData["VoiceCallSent"] != null)
+        {
+            <script type="text/javascript">
+                alert("Voice call sent successfully");
+            </script>
+            TempData.Remove("VoiceCallSent");
+        }
+
+    }
+    @{
+        if (TempData["VoiceCallLengthExceeded"] != null)
+        {
+            <script type="text/javascript">
+                alert("Length of voice call exceeded.More than 30 minutes audio is not allowed");
+            </script>
+            TempData.Remove("VoiceCallLengthExceeded");
+        }
+
+    }
+</div>
+<fieldset>
+    @using (Html.BeginForm("SendVoiceCallByAdmin", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", id = "callForm" }))
+    {
+        @Html.AntiForgeryToken()
+        <table class="clsTableLeftMargin" cellspacing="10" cellpadding="10">
+            <tr>
+                <td>Send message to all user</td>
+                <td>:</td>
+                <td><input type="checkbox" id="chkAllUser" name="chkAllUser" /></td>
+            </tr>
+            <tr id="RowBlock">
+                <td>Send message by block</td>
+                <td>:</td>
+                <td>
+                    @Html.DropDownListFor(x => x.BlockName, new SelectList(Model.BlockML, "Id", "BlockName"), "Select", new { @class = "layoutdropdown" })
+                </td>
+            </tr>
+            <tr>
+                <td>Attach Audio</td>
+                <td>:</td>
+                <td><input type="file" id="postedFile" name="postedFile" /></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td>
+                    <input type="submit" id="btnSendMessage" class="createbutton" value="Send" />
+                    <a href="/Admin/Dashboard" class="cancelbutton">Cancel</a>
+                </td>
+            </tr>
+        </table>
+    }
+
+
+</fieldset>
+<div id="myLoadingElement" style="display: none;margin-left:500px;">
+    <img src="~/images/WaitingLoader.gif" alt="Loading..." />
+</div>

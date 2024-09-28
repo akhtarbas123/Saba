@@ -1,0 +1,79 @@
+﻿
+@{
+    ViewBag.Title = "SendMessage";
+    Layout = "~/Views/Shared/_UserMenuAfterLogin.cshtml";
+}
+<link href="~/Content/css/SendMessage.css" rel="stylesheet" />
+<style type="text/css">
+    .clsSetHeaderDesc {
+        margin-top: 35px;
+        margin-left: 195px;
+    }
+</style>
+<script src="~/Content/js/SendMessage.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        Main();
+    });
+</script>
+<h2 class="clsSetHeaderDesc">Send Message</h2>
+<div>
+    @{
+        if (ViewBag.UserMsgSaved != null)
+        {
+            <script type="text/javascript">
+        alert("Message sent successfully");
+            </script>
+        }
+
+    }
+    @{
+        if (ViewBag.UserMsgError != null)
+        {
+            <script type="text/javascript">
+        alert("An error occured.Please try again.");
+            </script>
+        }
+
+    }
+
+</div>
+<div>
+    <fieldset>
+
+        @using (Html.BeginForm("SendMessage", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <table class="clsSendMessageTable" cellspacing="10" cellpadding="10">
+                <tr>
+                    <td><span class="clsSapnRed">*</span>Message Subject</td>
+                    <td>:</td>
+                    <td><textarea id="txtSubject" name="txtSubject" maxlength="380" class="reg-frm-inp"></textarea></td>
+                </tr>
+                <tr>
+                    <td><span class="clsSapnRed">*</span>Message Body</td>
+                    <td>:</td>
+                    <td><textarea id="txtMessagebody" name="txtMessagebody" class="reg-frm-inp"></textarea></td>
+                </tr>
+
+                <tr>
+                    <td>Attach Document</td>
+                    <td>:</td>
+                    <td><input type="file" id="postedFile" name="postedFile" /></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>
+
+                        <input type="submit" id="btnSendMessage" class="createbutton" value="Send" />
+                        <a href="/User/Dashboard" id="btnCancelSendMessage" class="cancelbutton">Cancel</a>
+                    </td>
+                </tr>
+            </table>
+
+        }
+
+
+    </fieldset>
+</div>
