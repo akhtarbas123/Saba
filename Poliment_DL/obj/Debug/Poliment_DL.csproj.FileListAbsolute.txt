@@ -25,3 +25,17 @@ D:\Project_Data\WorkSpace_BackUP\2019\Oct\02_Oct_2019\Temp_PMS\Poliment\Poliment
 D:\Project_Data\WorkSpace_BackUP\2019\Oct\02_Oct_2019\Temp_PMS\Poliment\Poliment_DL\obj\Debug\Poliment.132F6936.Up2Date
 D:\Project_Data\WorkSpace_BackUP\2019\Oct\02_Oct_2019\Temp_PMS\Poliment\Poliment_DL\obj\Debug\Poliment_DL.dll
 D:\Project_Data\WorkSpace_BackUP\2019\Oct\02_Oct_2019\Temp_PMS\Poliment\Poliment_DL\obj\Debug\Poliment_DL.pdb
+E:\Temp_Work\Git_WorkSpace\Akhtrul_Develop\Poliment_DL\bin\Debug\Poliment_DL.dll.config
+E:\Temp_Work\Git_WorkSpace\Akhtrul_Develop\Poliment_DL\bin\Debug\Poliment_DL.dll
+E:\Temp_Work\Git_WorkSpace\Akhtrul_Develop\Poliment_DL\bin\Debug\Poliment_DL.pdb
+E:\Temp_Work\Git_WorkSpace\Akhtrul_Develop\Poliment_DL\bin\Debug\EntityFramework.dll
+E:\Temp_Work\Git_WorkSpace\Akhtrul_Develop\Poliment_DL\bin\Debug\EntityFramework.SqlServer.dll
+E:\Temp_Work\Git_WorkSpace\Akhtrul_Develop\Poliment_DL\bin\Debug\EntityFramework.xml
+E:\Temp_Work\Git_WorkSpace\Akhtrul_Develop\Poliment_DL\bin\Debug\EntityFramework.SqlServer.xml
+E:\Temp_Work\Git_WorkSpace\Akhtrul_Develop\Poliment_DL\obj\Debug\Poliment_DL.csproj.AssemblyReference.cache
+E:\Temp_Work\Git_WorkSpace\Akhtrul_Develop\Poliment_DL\obj\Debug\Poliment_DL.CommonResource.resources
+E:\Temp_Work\Git_WorkSpace\Akhtrul_Develop\Poliment_DL\obj\Debug\Poliment_DL.csproj.GenerateResource.cache
+E:\Temp_Work\Git_WorkSpace\Akhtrul_Develop\Poliment_DL\obj\Debug\Poliment_DL.csproj.CoreCompileInputs.cache
+E:\Temp_Work\Git_WorkSpace\Akhtrul_Develop\Poliment_DL\obj\Debug\Poliment.132F6936.Up2Date
+E:\Temp_Work\Git_WorkSpace\Akhtrul_Develop\Poliment_DL\obj\Debug\Poliment_DL.dll
+E:\Temp_Work\Git_WorkSpace\Akhtrul_Develop\Poliment_DL\obj\Debug\Poliment_DL.pdb
