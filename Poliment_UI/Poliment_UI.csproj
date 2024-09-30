@@ -244,6 +244,7 @@
     <Compile Include="Models\Akhtrul3.cs" />
     <Compile Include="Models\Constant.cs" />
     <Compile Include="Models\CreateUserVM.cs" />
+    <Compile Include="Models\GuddaTest1.cs" />
     <Compile Include="Models\HomeVM.cs" />
     <Compile Include="Models\LayoutVM.cs" />
     <Compile Include="Models\ManageUserInterfaceVM.cs" />
@@ -337,7 +338,9 @@
     <Content Include="Views\Admin\SendVoiceCallByAdminToVoters.cshtml" />
     <Content Include="Views\Admin\GetVotersDetails.cshtml" />
     <Content Include="Views\User\GuddaTest.cshtml" />
+    <Content Include="Views\User\GuddaTest1.cshtml" />
     <Content Include="Views\User\AkhtarTest1.cshtml" />
+
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
