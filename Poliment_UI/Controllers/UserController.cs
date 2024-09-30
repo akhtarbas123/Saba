@@ -1139,6 +1139,9 @@ namespace Poliment_UI.Controllers
         {
             return View();
         }
-
+        public ActionResult GuddaTest1()
+        {
+            return View();
+        }
     }
 }
