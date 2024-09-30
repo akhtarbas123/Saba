@@ -239,6 +239,8 @@
     </Compile>
     <Compile Include="Models\AdminDashboard.cs" />
     <Compile Include="Models\AdminMessageVM.cs" />
+    <Compile Include="Models\Akhtrul1.cs" />
+    <Compile Include="Models\Akhtrul2.cs" />
     <Compile Include="Models\Constant.cs" />
     <Compile Include="Models\CreateUserVM.cs" />
     <Compile Include="Models\HomeVM.cs" />
@@ -334,6 +336,7 @@
     <Content Include="Views\Admin\SendVoiceCallByAdminToVoters.cshtml" />
     <Content Include="Views\Admin\GetVotersDetails.cshtml" />
     <Content Include="Views\User\GuddaTest.cshtml" />
+    <Content Include="Views\User\AkhtarTest1.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
