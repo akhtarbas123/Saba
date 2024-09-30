@@ -1016,6 +1016,9 @@ namespace Poliment_DL
             return "Akhtar Test";
         }
 
-
+        public string GuddaTest()
+        {
+            return "Gudda Test";
+        }
     }
 }
