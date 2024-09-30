@@ -333,6 +333,7 @@
     <Content Include="Views\Admin\SendSmsByAdminToVoters.cshtml" />
     <Content Include="Views\Admin\SendVoiceCallByAdminToVoters.cshtml" />
     <Content Include="Views\Admin\GetVotersDetails.cshtml" />
+    <Content Include="Views\User\GuddaTest.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

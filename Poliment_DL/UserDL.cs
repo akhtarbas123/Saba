@@ -1011,6 +1011,14 @@ namespace Poliment_DL
             return lstUserML;
         }
 
+        public string AkhtarTest()
+        {
+            return "Akhtar Test";
+        }
 
+        public string GuddaTest()
+        {
+            return "Gudda Test";
+        }
     }
 }

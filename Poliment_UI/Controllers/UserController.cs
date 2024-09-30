@@ -748,7 +748,7 @@ namespace Poliment_UI.Controllers
                     createUserVM.BlockML = adminDL.GetBlock();
                     string blockName = createUserVM.BlockML[0].BlockName;
                     createUserVM.AreaML = adminDL.GetArea(blockName);
-                    
+
                 }
                 catch (Exception ex)
                 {
@@ -1130,6 +1130,20 @@ namespace Poliment_UI.Controllers
             return View(createUserVM);
         }
 
+        public ActionResult AkhtarTest()
+        {
+            return View();
+        }
+
+        public ActionResult AkhtarTest1()
+        {
+            return View();
+        }
+
+        public ActionResult GuddaTest()
+        {
+            return View();
+        }
 
     }
 }
