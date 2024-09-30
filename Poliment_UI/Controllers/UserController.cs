@@ -1135,6 +1135,11 @@ namespace Poliment_UI.Controllers
             return View();
         }
 
+        public ActionResult AkhtarTest1()
+        {
+            return View();
+        }
+
         public ActionResult GuddaTest()
         {
             return View();
