@@ -241,6 +241,7 @@
     <Compile Include="Models\AdminMessageVM.cs" />
     <Compile Include="Models\Akhtrul1.cs" />
     <Compile Include="Models\Akhtrul2.cs" />
+    <Compile Include="Models\Akhtrul3.cs" />
     <Compile Include="Models\Constant.cs" />
     <Compile Include="Models\CreateUserVM.cs" />
     <Compile Include="Models\HomeVM.cs" />
